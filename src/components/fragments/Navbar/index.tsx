@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Navbar() {
     return (
@@ -10,19 +11,19 @@ export default function Navbar() {
 
                 <ul className="flex-row gap-x-10 hidden lg:flex">
                     <li>
-                        <a href="" className="text-base font-semibold text-navy">Home</a>
+                        <Link href="/" className="text-base font-semibold text-navy">Home</Link>
                     </li>
                     <li>
-                        <a href="" className="text-base font-semibold text-navy">Course</a>
+                        <Link href="/courses" className="text-base font-semibold text-navy">Course</Link>
                     </li>
                     <li>
-                        <a href="" className="text-base font-semibold text-navy">Services</a>
+                        <Link href="/services" className="text-base font-semibold text-navy">Services</Link>
                     </li>
                     <li>
-                        <a href="" className="text-base font-semibold text-navy">Instructor</a>
+                        <Link href="/instructor" className="text-base font-semibold text-navy">Instructor</Link>
                     </li>
                     <li>
-                        <a href="" className="text-base font-semibold text-navy">Contact</a>
+                        <Link href="/contact" className="text-base font-semibold text-navy">Contact</Link>
                     </li>
                 </ul>
 
