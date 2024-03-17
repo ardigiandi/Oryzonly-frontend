@@ -15,10 +15,11 @@ const config: Config = {
       },
       colors: {
         ungu :  '#5D00FF',
+        navy : '#211B3D',
       },
       fontFamily: {
-        manrope: ['var(--font-manrope)'],
-      },
+        'manrope': ['Manrope', 'sans-serif'],
+      }
     },
   },
   plugins: [],

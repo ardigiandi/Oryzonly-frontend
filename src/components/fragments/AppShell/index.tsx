@@ -1,6 +1,6 @@
 import { Children } from "react"
 import Navbar from "../Navbar"
-import { useRouter } from "next/router";
+import Footer from "../Footer";
 
 type ChildrenPageProps = { children : React.ReactNode}
 export default function AppShell (props : ChildrenPageProps) {
@@ -11,6 +11,7 @@ export default function AppShell (props : ChildrenPageProps) {
         <div>
             <Navbar/>
             {children}
+            <Footer/>
         </div>
     )
 }
