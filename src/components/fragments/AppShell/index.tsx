@@ -1,17 +1,21 @@
 import { Children } from "react"
 import Navbar from "../Navbar"
 import Footer from "../Footer";
+import { useRouter } from "next/router";
 
-type ChildrenPageProps = { children : React.ReactNode}
-export default function AppShell (props : ChildrenPageProps) {
+const disableNavbar = ["/auth/login" , "/auth/register"]
+const disableFooter = ["/auth/login" , "/auth/register"]
 
-    const {children} = props;
+type AppShellProps = { children: React.ReactNode }
+export default function AppShell(props: AppShellProps) {
 
-    return(
-        <div>
-            <Navbar/>
+    const { children } = props;
+    const { pathname } = useRouter();
+    return (
+        <main>
+            {!disableNavbar.includes(pathname)&& <Navbar /> }
             {children}
-            <Footer/>
-        </div>
+            {!disableFooter.includes(pathname) && <Footer /> }
+        </main>
     )
 }

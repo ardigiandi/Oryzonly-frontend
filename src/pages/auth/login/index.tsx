@@ -1,9 +1,11 @@
-import Loginviews from "@/views/auth/login"
+import Loginviews from "@/Views/Login"
 
-export default function loginPage () {
-    return(
-        <div>
+const Login = () => {
+    return (
+       <>
         <Loginviews/>
-        </div>
+       </>
     )
 }
+
+export default Login
