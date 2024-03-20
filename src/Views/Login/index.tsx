@@ -22,9 +22,9 @@ export default function Loginviews() {
                 <form className="flex flex-col mt-12 gap-y-5">
 
                     {/* email */}
-                    <div className="flex flex-col gap-y-2  duration-300 cursor-pointer bg-white">
+                    <div className="flex flex-col gap-y-2 duration-300 cursor-pointer bg-white">
                         <label htmlFor="email" className="text-base text-navy font-semibold">Email Address</label>
-                        <div className="flex gap-x-2 border-2 px-4 py-3 rounded-md">
+                        <div className="flex gap-x-2 border-2 px-4 py-3 rounded-md :focus    ">
                             <Image src="/sms.svg" alt="sms" width={24} height={24} priority={true} />
                             <input type="email" placeholder="cth: example@email.com" id="email" name="email" className="w-full bg-transparent focus:outline-none" />
                         </div>
