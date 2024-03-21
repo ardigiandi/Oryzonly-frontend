@@ -2,6 +2,7 @@ import Image from "next/image"
 import { FormEvent, useEffect } from "react"
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Registerviews() {
 
@@ -29,18 +30,12 @@ export default function Registerviews() {
             setFormFilled(true)
         }
     }, [inputValue])
-    const handleInputChange = (e: any) => {
+    const handleInputValue = (e: any) => {
         setInputValue(e.target.value)
     }
 
-    // Focus Input
-    const [fullnameFocus, setFullnamefocus] = useState(false)
-    const [emailFocus, setEmailFocus] = useState(false)
-    const [passwordFocus, setPasswordFocus] = useState(false)
-
-
     return (
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between my-[50px] lg:my-[120px] gap-x-[150px] px-5 lg:px-0">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between my-[50px] lg:my-[90px] gap-x-[150px] px-5 lg:px-0">
             <Image src="/register.png" width={500} height={500} alt={"register"} priority={true} className="hidden lg:block" />
             <div className="flex flex-col">
                 <h1 className="text-2xl text-navy font-semibold">Welcome Aboard!</h1>
@@ -48,41 +43,62 @@ export default function Registerviews() {
                 </p>
 
                 <form className="flex flex-col gap-y-5 mt-12">
-
                     {/* Fullname */}
-                    <div className="flex flex-col gap-y-2">
-                        <label htmlFor="fullname" className="text-base text-navy font-semibold">Full Name</label>
-                        <div className={` ${fullnameFocus ? 'border-ungu' : 'border-gray-200'} flex flex-row gap-x-2 border-2 rounded-md py-[14px] px-4`}>
-
-                            <Image src="/user.svg" width={24} height={24} alt={"user"} priority={true} />
-
-                            <input onFocus={() => setFullnamefocus(true)} onBlur={() => setFullnamefocus(false)} type="text" placeholder="enter your name.." id="fullname" name="fullname" className="w-full focus:outline-none " value={inputValue} onChange={handleInputChange} />
+                    <div>
+                        <label htmlFor="inputWithImage">
+                            <h1 className="text-base text-navy font-semibold">Fullname</h1>
+                        </label>
+                        <div className="relative mt-2">
+                            <input
+                                id="inputWithImage"
+                                type="text"
+                                className="w-full px-10 py-[14px] rounded-lg border-2 border-gray-300 focus:outline-none focus:border-ungu"
+                                placeholder="enter your name.."
+                                value={inputValue}
+                                onChange={handleInputValue}
+                            />
+                            <div className="absolute inset-y-0 left-3 flex items-center pr-3 pointer-events-none">
+                                <Image src="/user.svg" width={20} height={20} alt="search" />
+                            </div>
                         </div>
                     </div>
 
                     {/* Email */}
-                    <div className="flex flex-col gap-y-2">
-                        <label htmlFor="email" className="text-base text-navy font-semibold">Email Address</label>
-                        <div className={`${emailFocus ? 'border-ungu' : 'border-gray-200'} flex flex-row gap-x-2 border-2 rounded-md py-[14px] px-4`}>
-
-                            <Image src="/sms.svg" width={24} height={24} alt={"sms"} priority={true} />
-
-                            <input onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} type="email" placeholder="cth: example@email.com" id="email" name="email" className="focus:outline-none w-full bg-transparent"
+                    <div>
+                        <label htmlFor="inputWithImage">
+                            <h1 className="text-base text-navy font-semibold">Email Address</h1>
+                        </label>
+                        <div className="relative mt-2">
+                            <input
+                                id="inputWithImage"
+                                type="email"
+                                className="w-full px-10 py-[14px] rounded-lg border-2 border-gray-300 focus:outline-none focus:border-ungu"
+                                placeholder="cth: example@email.com"
                             />
+                            <div className="absolute inset-y-0 left-3 flex items-center pr-3 pointer-events-none">
+                                <Image src="/sms.svg" width={20} height={20} alt="search" />
+                            </div>
                         </div>
                     </div>
 
                     {/* Password */}
-                    <div className="flex flex-col gap-y-2">
-                        <label htmlFor="password" className="text-base text-navy font-semibold">Password</label>
-                        <div className={`${passwordFocus ? 'border-ungu' : 'border-gray-200'} flex flex-row gap-x-2 border-2 rounded-md py-[14px] px-4`}>
-
-                            <Image src="/lock.svg" width={24} height={24} alt={"lock"} priority={true} />
-
-                            <input onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)} onChange={(password) => setPassword(password.target.value)} type={passwordVisible ? "text" : "password"} placeholder="enter your password" id="password" name="password" className="w-full focus:outline-none" />
-
-                            <div onClick={tooglePasswordVisibility} className="text-gray-300" >
-                                {passwordVisible ? <Image src="/eye-open.svg" width={24} height={24} alt={"eye"} priority={true} /> : <Image src="/eye-close.svg" width={24} height={24} alt={"eye"} priority={true} />}
+                    <div>
+                        <label htmlFor="inputWithImage">
+                            <h1 className="text-base text-navy font-semibold">Password</h1>
+                        </label>
+                        <div className="relative mt-2">
+                            <input
+                                id="inputWithImage"
+                                type={passwordVisible ? "text" : "password"}
+                                className="w-full px-10 py-[14px] rounded-lg border-2 border-gray-300 focus:outline-none focus:border-ungu"
+                                placeholder="••••••••••••"
+                                onChange={(password) => setPassword(password.target.value)}
+                            />
+                            <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                                <Image src="/lock.svg" width={20} height={20} alt="search" />
+                            </div>
+                            <div onClick={tooglePasswordVisibility} className="absolute inset-y-0 right-3 flex items-center">
+                                {passwordVisible ? <Image src="/eye-open.svg" width={20} height={20} alt="eyes" /> : <Image src="/eye-close.svg" width={20} height={20} alt="eyes" />}
                             </div>
                         </div>
                     </div>
@@ -90,20 +106,22 @@ export default function Registerviews() {
 
                 {/* Forget Password */}
                 <div className="w-full flex justify-end mt-5">
-                    <button className="text-base text-gray-500 font-semibold cursor-pointer">Forgot Password?</button>
+                    <button type="submit" className="text-base text-gray-500 font-semibold cursor-pointer">Forgot Password?</button>
                 </div>
 
                 <div className="flex flex-col gap-y-5 mt-5">
-                {/* Button Register */}
-                <button  onClick={handleRegister} style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }} type="submit" className="w-full py-[14px] text-base font-semibold text-white rounded-md">Create Your Account
-                </button>
+                    {/* Button Register */}
+                    <button onClick={handleRegister} style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }} type="submit" className="w-full py-[14px] text-base font-semibold text-white rounded-md">Create Your Account
+                    </button>
 
-                {/* Button Register From Google */}
-                <button className="flex flex-row gap-x-2 justify-center border-2 rounded-md py-4
+                    {/* Button Register From Google */}
+                    <button className="flex flex-row gap-x-2 justify-center border-2 rounded-md py-4
                     ">
-                    <Image src="/ic_google.svg" width={20} height={20} alt="google" priority={true} />
-                    <h1 className="text-base text-navy font-semibold">Sign in with Google</h1>
-                </button>
+                        <Image src="/ic_google.svg" width={20} height={20} alt="google" priority={true} />
+                        <h1 className="text-base text-navy font-semibold">Sign in with Google</h1>
+                    </button>
+                    
+                    <p className="flex w-full justify-center text-base">Have an Account? <Link href="/auth/login" className="text-ungu px-1 font-semibold">Login</Link></p>
                 </div>
             </div>
         </div>
