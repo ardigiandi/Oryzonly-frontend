@@ -7,8 +7,7 @@ export default function Registerviews() {
 
     const { push } = useRouter()
 
-    const handlerRegister = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleRegister = () => {
         push("/auth/login")
     }
 
@@ -33,9 +32,6 @@ export default function Registerviews() {
     const handleInputChange = (e: any) => {
         setInputValue(e.target.value)
     }
-    const handleButtonClick = () => {
-        setInputValue('')
-    }
 
     // Focus Input
     const [fullnameFocus, setFullnamefocus] = useState(false)
@@ -51,12 +47,12 @@ export default function Registerviews() {
                 <p className="text-base text-gray-500 mt-4">We’re excited to have you join our community. Begin your journey with us by creating your account.
                 </p>
 
-                <form onSubmit={handlerRegister} className="flex flex-col gap-y-5 mt-12">
+                <form className="flex flex-col gap-y-5 mt-12">
 
                     {/* Fullname */}
                     <div className="flex flex-col gap-y-2">
                         <label htmlFor="fullname" className="text-base text-navy font-semibold">Full Name</label>
-                        <div className={` ${fullnameFocus ? 'border-ungu' : 'border-gray-200'} flex flex-row gap-x-2 border-2 rounded-md py-[14px] px-4 focus:border-ungu`}>
+                        <div className={` ${fullnameFocus ? 'border-ungu' : 'border-gray-200'} flex flex-row gap-x-2 border-2 rounded-md py-[14px] px-4`}>
 
                             <Image src="/user.svg" width={24} height={24} alt={"user"} priority={true} />
 
@@ -90,23 +86,25 @@ export default function Registerviews() {
                             </div>
                         </div>
                     </div>
-
-                    {/* Forget Password */}
-                    <div className="w-full flex justify-end">
-                        <h1 className="text-base text-gray-500 font-semibold cursor-pointer">Forgot Password?</h1>
-                    </div>
-
-                    {/* Button Register */}
-                    <button style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }} type="submit" onClick={handleButtonClick} className="w-full py-[14px] text-base font-semibold text-white rounded-md">Create Your Account
-                    </button>
-
-                    {/* Button Register From Google */}
-                    <button className="flex flex-row gap-x-2 justify-center border-2 rounded-md py-4
-                    ">
-                        <Image src="/ic_google.svg" width={20} height={20} alt="google" priority={true} />
-                        <h1 className="text-base text-navy font-semibold">Sign in with Google</h1>
-                    </button>
                 </form>
+
+                {/* Forget Password */}
+                <div className="w-full flex justify-end mt-5">
+                    <button className="text-base text-gray-500 font-semibold cursor-pointer">Forgot Password?</button>
+                </div>
+
+                <div className="flex flex-col gap-y-5 mt-5">
+                {/* Button Register */}
+                <button  onClick={handleRegister} style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }} type="submit" className="w-full py-[14px] text-base font-semibold text-white rounded-md">Create Your Account
+                </button>
+
+                {/* Button Register From Google */}
+                <button className="flex flex-row gap-x-2 justify-center border-2 rounded-md py-4
+                    ">
+                    <Image src="/ic_google.svg" width={20} height={20} alt="google" priority={true} />
+                    <h1 className="text-base text-navy font-semibold">Sign in with Google</h1>
+                </button>
+                </div>
             </div>
         </div>
     )
