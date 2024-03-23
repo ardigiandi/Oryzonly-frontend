@@ -5,6 +5,11 @@ import Link from "next/link"
 
 export default function Loginviews() {
 
+    const { push } = useRouter()
+    const handleLogin = () => {
+        push("/")
+    }
+
     // Password Visible
     const [passwordVisible, setPasswordVisible] = useState(false)
     const [password, setPassword] = useState('')
@@ -85,7 +90,7 @@ export default function Loginviews() {
                 </div>
 
                 <div className="flex flex-col gap-y-5 mt-5">
-                    <button className={`${isFilled ? "bg-ungu" : "bg-gray-300"} py-[14px] text-base text-white font-semibold rounded-md`}>Access Your Account
+                    <button onClick={handleLogin} className={`${isFilled ? "bg-ungu" : "bg-gray-300"} py-[14px] text-base text-white font-semibold rounded-md`}>Access Your Account
                     </button>
 
                     <button className="flex flex-row gap-x-2 justify-center border-2 rounded-md py-4">

@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export default function Registerviews() {
 
+    // push
     const { push } = useRouter()
-
     const handleRegister = () => {
         push("/auth/login")
     }
