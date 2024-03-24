@@ -6,18 +6,18 @@ export default function Footer() {
         <footer className="bg-ungu mt-[154px]">
             <div className="max-w-6xl mx-auto flex flex-col gap-y-12 py-[120px]">
                 <div className="flex flex-col lg:flex-row justify-between items-start">
-                    <div className="flex flex-col gap-y-8 lg:w-[455px] px-5 lg:px-0">
-                        <Image src="/footer.svg" alt="" width={155} height={100} />
+                    <div className="flex flex-col gap-y-8 lg:w-[455px] px-5 lg:px-0 h-auto">
+                        <Image src="/footer.svg" alt="footer" width={155} height={34} priority={true} className="h-[34px]" />
                         <h1 className="text-sm text-white font-semibold">
                             Stay connected with us! Follow our latest updates on social media
                             and subscribe to our newsletter for exclusive information. Be part
                             of our ever-growing community in learning and growth.
                         </h1>
                         <div className="flex gap-x-3">
-                            <Image src="/message.svg" alt="" width={44} height={44} />
-                            <Image src="/browser.svg" alt="" width={44} height={44} />
-                            <Image src="/phone.svg" alt="" width={44} height={44} />
-                            <Image src="/video.svg" alt="" width={44} height={44} />
+                            <Image src="/message.svg" alt="" width={44} height={44} priority={true} />
+                            <Image src="/browser.svg" alt="" width={44} height={44} priority={true}/>
+                            <Image src="/phone.svg" alt="" width={44} height={44} priority={true}/>
+                            <Image src="/video.svg" alt="" width={44} height={44} priority={true}/>
                         </div>
                     </div>
 

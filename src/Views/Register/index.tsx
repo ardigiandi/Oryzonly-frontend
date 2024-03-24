@@ -98,7 +98,7 @@ export default function Registerviews() {
                                 <Image src="/lock.svg" width={20} height={20} alt="search" />
                             </div>
                             <div onClick={tooglePasswordVisibility} className="absolute inset-y-0 right-3 flex items-center">
-                                {passwordVisible ? <Image src="/eye-open.svg" width={20} height={20} alt="eyes" /> : <Image src="/eye-close.svg" width={20} height={20} alt="eyes" />}
+                                {passwordVisible ? <Image src="/eye-open.svg" width={20} height={20} alt="eyes" priority={true} /> : <Image src="/eye-close.svg" width={20} height={20} alt="eyes" priority={true} />}
                             </div>
                         </div>
                     </div>

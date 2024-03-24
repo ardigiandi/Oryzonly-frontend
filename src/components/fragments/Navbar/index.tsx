@@ -14,7 +14,7 @@ export default function Navbar() {
         <nav className="max-w-6xl mx-auto flex flex-col">
             <div className="flex flex-row justify-between mt-11 items-center px-5">
                 <div>
-                    <Image src={"/Frame 10.svg"} alt="logo" width={100} height={100} />
+                    <Image src="/Frame 10.svg" alt="logo" width={155} height={34} priority={true} className="h-[34px]" />
                 </div>
 
                 <ul className="flex-row gap-x-10 hidden lg:flex">
@@ -37,13 +37,9 @@ export default function Navbar() {
 
                 <div onClick={toogleNavbar} className="block lg:hidden">
                     {isClick ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
+                        <Image src="/x.svg" width={24} height={24} alt="hamburger" priority={true} />
                     ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-                        </svg>
+                        <Image src="/menu.svg" width={24} height={24} alt="hamburger" priority={true} />
                     )}
                 </div>
 
