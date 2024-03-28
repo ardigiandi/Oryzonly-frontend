@@ -74,7 +74,6 @@ export default function Registerviews() {
                         placeholder="enter your password.."
                         passwordvisible={passwordVisible}
                         onClick={tooglePasswordVisibility}
-                        onChange={handleInputValue}
                     >
                         {passwordVisible ? <Image src="/eye-open.svg" width={20} height={20} alt="eyes" priority={true} /> : <Image src="/eye-close.svg" width={20} height={20} alt="eyes" priority={true} />}
                     </Input>
