@@ -22,7 +22,7 @@ export default function Footer() {
                     </div>
 
                     <div
-                        className="flex flex-wrap lg:gap-x-12 justify-between px-7 mt-12 lg:mt-0 gap-y-10 "
+                        className="flex-wrap lg:gap-x-12 justify-between px-7 mt-12 lg:mt-0 gap-y-10 hidden lg:flex"
                     >
                         <div className="flex flex-col gap-y-4">
                             <h1 className="text-xl text-white font-semibold">Company</h1>
