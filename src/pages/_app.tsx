@@ -1,4 +1,4 @@
-import AppShell from "@/components/fragments/AppShell";
+import AppShell from "@/components/layouts/AppShell";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Manrope } from 'next/font/google'
