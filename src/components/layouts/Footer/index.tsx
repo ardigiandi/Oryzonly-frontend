@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
     return (
         <footer className="relative bg-ungu mt-[100px] lg:mt-[150px] w-full">
-            <div className="max-w-6xl mx-auto flex flex-col gap-y-12 py-[160px]">
+            <div className="max-w-6xl mx-auto flex flex-col gap-y-12 lg:py-[160px] py-[70px]">
                 <div className="flex flex-col lg:flex-row justify-between items-start">
                     <div className="flex flex-col gap-y-8 lg:w-[455px] px-5 lg:px-0">
                         <Image src="/footer.svg" width={155} height={34} alt="logo" priority={true} />
@@ -104,7 +104,7 @@ export default function Footer() {
                 width={105}
                 height={80}
                 priority={true}
-                className="absolute w-[105px] h-[102px] top-0 left-20"
+                className="absolute w-[105px] h-[102px] top-0 left-20 hidden lg:block"
             />
             <Image
                 src="/Titik-titik.png"
@@ -112,7 +112,7 @@ export default function Footer() {
                 width={105}
                 height={80}
                 priority={true}
-                className="absolute w-[105px] h-[80px] bottom-0 right-20"
+                className="absolute w-[105px] h-[80px] bottom-0 right-20 hidden lg:block"
             />
         </footer>
     )
