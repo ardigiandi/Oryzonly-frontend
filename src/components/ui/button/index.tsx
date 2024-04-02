@@ -7,7 +7,7 @@ type Propstypes = {
     style?: React.CSSProperties
     className?: string
     border?: string
-    type: 'button' | 'submit' | 'reset' | undefined
+    type? : "submit" | "reset" | "button"
 }
 const Button = (props: Propstypes) => {
 

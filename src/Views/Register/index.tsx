@@ -9,11 +9,41 @@ import AuthLayouts from "@/components/layouts/Authlayouts";
 
 export default function Registerviews() {
 
-    // push
+    const [isLoading, setIsLoading] = useState(false)
+    const [Error, setError] = useState('')
+
+
     const { push } = useRouter()
-    const handleRegister = () => {
-        push("/auth/login")
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setIsLoading(true)
+        setError('')
+        const form = event.target as HTMLFormElement
+        const data = {
+            fullname: form.fullname.value,
+            email: form.email.value,
+            password: form.password.value,
+        }
+
+        const result = await fetch('/api/user/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+
+        if (result.status === 200) {
+            form.reset()
+            setIsLoading(false)
+            push('/auth/login')
+        } else {
+            setIsLoading(false)
+            setError('Email is Already Registered')
+        }
     }
+
 
     // Password Visible
     const [passwordVisible, setPasswordVisible] = useState(false)
@@ -39,69 +69,60 @@ export default function Registerviews() {
 
     return (
         <AuthLayouts
-            title="Welcome Aboard!"
-            description="We're excited to have you join our community. Begin your journey with us by creating your account."
+            title="Hi, Welcome Back!"
+            description="Glad to see you again! Enter your credentials to access your account
+            and explore what awaits you. We're thrilled to have you back!"
             image="/register.png"
-            link="/auth/login"
-            linkText="Already have an account?"
+            link="/auth/register"
+            linkText="Don't have an account? "
             text="Login"
         >
-            <form className="flex flex-col gap-y-5 mt-12">
+            <form onSubmit={handleSubmit} className="mt-[50px] space-y-5">
+                {Error && <div className="flex justify-center text-red-600">{Error}</div>}
                 <Input
                     label="Fullname"
-                    id="fullname"
-                    name="fullname"
-                    Image="/user.svg"
                     type="text"
+                    name="fullname"
+                    id="fullname"
                     placeholder="enter your name.."
-                    value={inputValue}
+                    Image="/user.svg"
+                    onChange={handleInputValue}
+                />
+                <Input
+                    label="Email Address"
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="cth: example@email.com"
+                    Image="/sms.svg"
                     onChange={handleInputValue}
                 />
 
                 <Input
-                    label="Email Address"
-                    id="email"
-                    name="email"
-                    Image="/sms.svg"
-                    type="email"
-                    placeholder="cth: example@email.com"
-                />
-
-                <Input
                     label="Password"
-                    id="password"
-                    name="password"
-                    Image="/lock.svg"
                     type={passwordVisible ? "text" : "password"}
-                    placeholder="enter your password.."
+                    name="password"
+                    id="password"
+                    placeholder="Password"
+                    Image="/lock.svg"
+                    onChange={handleInputValue}
                     passwordvisible={passwordVisible}
                     onClick={tooglePasswordVisibility}
                 >
-                    {passwordVisible ? <Image src="/eye-open.svg" width={20} height={20} alt="eyes" priority={true} /> : <Image src="/eye-close.svg" width={20} height={20} alt="eyes" priority={true} />}
+                    {passwordVisible ? (
+                        <Image src="/eye-open.svg" width={24} height={24} alt="eye" priority={true} />
+                    ) : (
+                        <Image src="/eye-close.svg" width={24} height={24} alt="eye" priority={true} />
+                    )}
                 </Input>
+                <Button
+                    className="text-base text-white font-semibold"
+                    style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }}
+                    type="submit">
+                    {isLoading ? 'Loading' : 'Create Your Account'}
+                </Button>
             </form>
 
-            <div className="w-full flex justify-end mt-5">
-                <button type="submit" className="text-base text-gray-500 font-semibold cursor-pointer">Forgot Password?</button>
-            </div>
-
-            <Button
-                onClick={handleRegister}
-                style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }}
-                className="text-base text-white font-semibold"
-                type="submit"
-            >
-                Create Your Account
-            </Button>
-
-            <Button
-                Image="/ic_google.svg"
-                className="text-base text-navy font-semibold"
-                border="border-2"
-                type="submit"
-            >
-                Sign up with Google
-            </Button>
         </AuthLayouts>
     )
 }

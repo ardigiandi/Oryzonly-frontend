@@ -1,6 +1,6 @@
 import { Children } from "react"
-import Navbar from "../Navbar"
-import Footer from "../Footer";
+import Navbar from "../../fragments/Navbar"
+import Footer from "../../fragments/Footer";
 import { useRouter } from "next/router";
 
 const disableNavbar = ["/auth/login" , "/auth/register"]

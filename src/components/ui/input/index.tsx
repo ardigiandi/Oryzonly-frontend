@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Children } from "react";
 
+
 type Propstypes = {
     label: string;
     name: string;
@@ -13,11 +14,12 @@ type Propstypes = {
     Image: string;
     passwordvisible?: boolean | undefined;
     children? : React.ReactNode
+    onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
 const Input = (props: Propstypes) => {
 
-    const { label, name, type, placeholder, value, onChange, children } = props
+    const { label, name, type, placeholder, value, onChange, children, onSubmit } = props
     return (
         <div>
             <label htmlFor={name} className="text-base text-navy font-semibold">
