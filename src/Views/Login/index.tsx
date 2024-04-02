@@ -1,40 +1,72 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import Input from "@/components/ui/input"
 import Button from "@/components/ui/button"
 import AuthLayouts from "@/components/layouts/Authlayouts"
+import { signIn } from "next-auth/react"
+
 
 export default function Loginviews() {
 
-    const { push } = useRouter()
-    const handleLogin = () => {
-        push("/")
+    const [isLoading, setIsLoading] = useState(false)
+    const [Error, setError] = useState('')
+
+
+    const { push, query } = useRouter()
+
+    const callbackUrl: any = query.callbackUrl || '/'
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setIsLoading(true)
+        setError('')
+        const form = event.target as HTMLFormElement
+
+        try {
+            const res = await signIn("credentials", {
+                redirect: false,
+                email: form.email.value,
+                password: form.password.value,
+                callbackUrl
+            })
+
+            if (!res?.error) {
+                setIsLoading(false)
+                form.reset()
+                push(callbackUrl)
+            } else {
+                setIsLoading(false)
+                setError('Email or Password is incorrect')
+            }
+        } catch (error) {
+            setIsLoading(false)
+            setError('Email or Password is incorrect')
+        }
     }
+
 
     // Password Visible
     const [passwordVisible, setPasswordVisible] = useState(false)
-    const [password, setPassword] = useState('')
-
+    const [password, setPassword] = useState("")
     const tooglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible)
     }
 
-    // button Color
-    const [isFilled, setIsFilled] = useState(false)
+    // Button Color
+    const [formFilled, setFormFilled] = useState(false)
     const [inputValue, setInputValue] = useState('')
 
     useEffect(() => {
-        if (inputValue === '') {
-            setIsFilled(false)
+        if (inputValue === "") {
+            setFormFilled(false)
         } else {
-            setIsFilled(true)
+            setFormFilled(true)
         }
-    }, [inputValue])        
+    }, [inputValue])
     const handleInputValue = (e: any) => {
         setInputValue(e.target.value)
     }
-
 
     return (
         <AuthLayouts
@@ -46,7 +78,8 @@ export default function Loginviews() {
             linkText="Don't have an account? "
             text="Register"
         >
-            <form action="" className="mt-[50px] space-y-5">
+            <form onSubmit={handleSubmit} className="mt-[50px] space-y-5">
+                {Error && <div className="flex justify-center text-red-600">{Error}</div>}
                 <Input
                     label="Email Address"
                     type="email"
@@ -74,28 +107,14 @@ export default function Loginviews() {
                         <Image src="/eye-close.svg" width={24} height={24} alt="eye" priority={true} />
                     )}
                 </Input>
+                <Button
+                    className="text-base text-white font-semibold"
+                    style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }}
+                    type="submit">
+                    {isLoading ? 'Loading' : 'Create Your Account'}
+                </Button>
             </form>
 
-            <div className="flex w-full justify-end mt-5 cursor-pointer">
-                <h1 className="text-base text-gray-600">Forgot Password?</h1>
-            </div>
-
-            <Button
-                onClick={handleLogin}
-                className="text-base text-white font-semibold"
-                style={{ backgroundColor: isFilled ? "#5D00FF" : "#BFBFBF" }}
-                type="submit"
-            >
-                Access Your Account
-            </Button>
-            <Button
-                className="text-base text-navy font-semibold"
-                Image="/ic_google.svg"
-                border="border-2"
-                type="submit"
-            >
-                Sign in with Google
-            </Button>
         </AuthLayouts>
     )
 }

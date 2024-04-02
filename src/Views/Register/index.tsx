@@ -73,7 +73,7 @@ export default function Registerviews() {
             description="Glad to see you again! Enter your credentials to access your account
             and explore what awaits you. We're thrilled to have you back!"
             image="/register.png"
-            link="/auth/register"
+            link="/auth/login"
             linkText="Don't have an account? "
             text="Login"
         >
