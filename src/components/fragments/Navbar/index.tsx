@@ -2,15 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/router"
+import { signIn, signOut, useSession } from "next-auth/react"
 
 export default function Navbar() {
 
-    // push Login
-    const { push } = useRouter()
-    const handleLogin = () => {
-        push("/auth/login")
-    }
-
+    const { data }: any = useSession()
     // Toggle Navbar
     const [isClick, setIsClick] = useState(false);
 
@@ -51,13 +47,20 @@ export default function Navbar() {
                     )}
                 </div>
 
-                <button
+
+                {data ? <button
                     className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
-                    onClick={handleLogin}
+                    onClick={() => signOut()}
+                    type="button"
+                >
+                    Logout
+                </button> : <button
+                    className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
+                    onClick={() => signIn()}
                     type="button"
                 >
                     Login
-                </button>
+                </button>}
             </div>
 
 
@@ -84,13 +87,12 @@ export default function Navbar() {
                         </li>
                     </ul>
 
-                        <button 
+                    <button
                         className="bg-white py-4 flex justify-center mt-7 rounded-xl"
-                        onClick={handleLogin}
                         type="button"
-                        >
-                            Login
-                        </button>
+                    >
+                        Login
+                    </button>
                 </div>
             )}
         </nav>

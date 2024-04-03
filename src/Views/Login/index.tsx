@@ -93,7 +93,7 @@ export default function Loginviews() {
                 <Input
                     label="Password"
                     type={passwordVisible ? "text" : "password"}
-                    name="password"
+                    name="Password"
                     id="password"
                     placeholder="Password"
                     Image="/lock.svg"
@@ -111,10 +111,9 @@ export default function Loginviews() {
                     className="text-base text-white font-semibold"
                     style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }}
                     type="submit">
-                    {isLoading ? 'Loading' : 'Create Your Account'}
+                    {isLoading ? 'Loading' : 'Access Your Account'}
                 </Button>
             </form>
-
         </AuthLayouts>
     )
 }
