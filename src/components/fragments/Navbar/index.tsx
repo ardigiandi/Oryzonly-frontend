@@ -56,13 +56,13 @@ export default function Navbar() {
 
 
                 {data ? <button
-                    className="bg-ungu px-12 py-[14px] text-base font-semibold text-black rounded-xl hidden lg:block"
+                    className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
                     onClick={() => signOut()}
                     type="button"
                 >
                     Logout
                 </button> : <button
-                    className="bg-ungu px-12 py-[14px] text-base font-semibold text-black rounded-xl hidden lg:block"
+                    className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
                     onClick={() => signIn()}
                     type="button"
                 >
@@ -95,7 +95,7 @@ export default function Navbar() {
                     </ul>
                     
                     {data ? <button
-                        className="bg-white my-5 py-3 w-full text-base font-semibold text-white rounded-xl"
+                        className="bg-white my-5 py-3 w-full text-base font-semibold text-black rounded-xl"
                         onClick={() => signOut()}
                         type="button"
                     >
