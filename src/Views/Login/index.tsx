@@ -116,7 +116,7 @@ export default function Loginviews() {
 
                 <button 
                 className="w-full py-4 px-12 lg:px-[60px] text-sm lg:text-base font-semibold text-center rounded-lg border-2 border-gray-200"
-                onClick={() => signIn("googl    e", { callbackUrl, redirect: false })}
+                onClick={() => signIn("google", { callbackUrl, redirect: false })}
                 type="button"
                 >
                     sign in with google

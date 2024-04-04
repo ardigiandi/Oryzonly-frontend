@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/router"
 import { signIn, signOut, useSession } from "next-auth/react"
+import Button from "@/components/ui/button"
 
 export default function Navbar() {
 
@@ -13,6 +14,10 @@ export default function Navbar() {
     const toogleNavbar = () => {
         setIsClick(!isClick);
     }
+    
+    const { push, query } = useRouter()
+
+    const callbackUrl: any = query.callbackUrl || '/'
 
     return (
         <nav className="max-w-6xl mx-auto flex flex-col">
@@ -87,12 +92,13 @@ export default function Navbar() {
                         </li>
                     </ul>
 
-                    <button
-                        className="bg-white py-4 flex justify-center mt-7 rounded-xl"
+                    <Button
+                        className="bg-white py-4 flex justify-center rounded-xl w-full"
                         type="button"
+                        onClick={() => signIn('google', { callbackUrl, redirect: true })}
                     >
                         Login
-                    </button>
+                    </Button>
                 </div>
             )}
         </nav>
