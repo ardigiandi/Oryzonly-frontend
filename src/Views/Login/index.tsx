@@ -114,13 +114,15 @@ export default function Loginviews() {
                     {isLoading ? 'Loading' : 'Access Your Account'}
                 </Button>
 
-                <button 
-                className="w-full py-4 px-12 lg:px-[60px] text-sm lg:text-base font-semibold text-center rounded-lg border-2 border-gray-200"
-                onClick={() => signIn("google", { callbackUrl, redirect: false })}
+                <Button
+                className="text-base text-navy font-semibold"
+                border="border-2 border-gray-300"
                 type="button"
+                Image={"/ic_google.svg"}
+                onClick={() => signIn("google", { callbackUrl, redirect: false })}
                 >
-                    sign in with google
-                </button>
+                    Sign in with Google
+                </Button>
             </form>
         </AuthLayouts>
     )
