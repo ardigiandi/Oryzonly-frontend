@@ -6,6 +6,7 @@ import Link from "next/link";
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import AuthLayouts from "@/components/layouts/Authlayouts";
+import { signIn } from "next-auth/react";
 
 export default function Registerviews() {
 
@@ -47,7 +48,6 @@ export default function Registerviews() {
 
     // Password Visible
     const [passwordVisible, setPasswordVisible] = useState(false)
-    const [password, setPassword] = useState("")
     const tooglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible)
     }
@@ -103,7 +103,7 @@ export default function Registerviews() {
                     type={passwordVisible ? "text" : "password"}
                     name="password"
                     id="password"
-                    placeholder="Password"
+                    placeholder="••••••••••••"
                     Image="/lock.svg"
                     onChange={handleInputValue}
                     passwordvisible={passwordVisible}

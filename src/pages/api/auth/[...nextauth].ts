@@ -2,7 +2,8 @@ import { compare } from "bcrypt";
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { signIn } from "@/lib/firebase/service";
+import { loginWithGoogle, signIn } from "@/lib/firebase/service";
+import GoogleProvider from "next-auth/providers/google";
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -36,6 +37,11 @@ const authOptions: NextAuthOptions = {
         }
       },
     }),
+
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+    })
   ],
 
   callbacks: {
@@ -44,6 +50,23 @@ const authOptions: NextAuthOptions = {
         token.email = user.email;
         token.fullname = user.fullname;
         token.role = user.role;
+      }
+
+      if (account?.provider === 'google') {
+        const data = {
+          fullname: user.name,
+          email: user.email,
+          type: 'google'
+        }
+
+        await loginWithGoogle(
+          data,
+          (data: any) => {
+            token.email = data.email
+            token.fullname = data.fullname
+            token.role = data.role
+          }
+        )
       }
       return token;
     },

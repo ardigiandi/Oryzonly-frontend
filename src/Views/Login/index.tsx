@@ -10,7 +10,7 @@ import { signIn } from "next-auth/react"
 export default function Loginviews() {
 
     const [isLoading, setIsLoading] = useState(false)
-    const [Error, setError] = useState('')
+    const [error, setError] = useState('')
 
 
     const { push, query } = useRouter()
@@ -42,13 +42,14 @@ export default function Loginviews() {
         } catch (error) {
             setIsLoading(false)
             setError('Email or Password is incorrect')
+        } finally {
+            setIsLoading(false)
         }
     }
 
 
     // Password Visible
     const [passwordVisible, setPasswordVisible] = useState(false)
-    const [password, setPassword] = useState("")
     const tooglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible)
     }
@@ -79,7 +80,7 @@ export default function Loginviews() {
             text="Register"
         >
             <form onSubmit={handleSubmit} className="mt-[50px] space-y-5">
-                {Error && <div className="flex justify-center text-red-600">{Error}</div>}
+                {error && <div className="flex justify-center text-red-600">{error}</div>}
                 <Input
                     label="Email Address"
                     type="email"
@@ -93,9 +94,9 @@ export default function Loginviews() {
                 <Input
                     label="Password"
                     type={passwordVisible ? "text" : "password"}
-                    name="Password"
+                    name="password"
                     id="password"
-                    placeholder="Password"
+                    placeholder="••••••••••••"
                     Image="/lock.svg"
                     onChange={handleInputValue}
                     passwordvisible={passwordVisible}
@@ -113,6 +114,14 @@ export default function Loginviews() {
                     type="submit">
                     {isLoading ? 'Loading' : 'Access Your Account'}
                 </Button>
+
+                <button 
+                className="w-full py-4 px-12 lg:px-[60px] text-sm lg:text-base font-semibold text-center rounded-lg border-2 border-gray-200"
+                onClick={() => signIn("google", { callbackUrl, redirect: false })}
+                type="button"
+                >
+                    sign in with google
+                </button>
             </form>
         </AuthLayouts>
     )

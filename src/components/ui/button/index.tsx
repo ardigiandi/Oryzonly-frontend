@@ -18,7 +18,7 @@ const Button = (props: Propstypes) => {
                 onClick={onClick}
                 style={style}
                 type={type}
-                className={`flex flex-row gap-x-2 justify-center ${border} rounded-md py-4`}>
+                className={`flex flex-row gap-x-2 justify-center ${border} rounded-md py-4 items-center`}>
                 {props.Image && <Image src={props.Image} width={20} height={20} alt="search" />}
                 <h1 className={className}>{children}</h1>
             </button>
