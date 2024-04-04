@@ -7,6 +7,11 @@ import Button from "@/components/ui/button"
 
 export default function Navbar() {
 
+    const {push} = useRouter()
+    const login = () => {
+        push('/auth/login')
+    }
+
     const { data }: any = useSession()
     // Toggle Navbar
     const [isClick, setIsClick] = useState(false);
@@ -15,9 +20,6 @@ export default function Navbar() {
         setIsClick(!isClick);
     }
     
-    const { push, query } = useRouter()
-
-    const callbackUrl: any = query.callbackUrl || '/'
 
     return (
         <nav className="max-w-6xl mx-auto flex flex-col">
@@ -95,7 +97,7 @@ export default function Navbar() {
                     <Button
                         className="bg-white py-4 flex justify-center rounded-xl w-full"
                         type="button"
-                        onClick={() => signIn('google', { callbackUrl, redirect: true })}
+                        onClick={login}
                     >
                         Login
                     </Button>
