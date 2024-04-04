@@ -39,8 +39,8 @@ const authOptions: NextAuthOptions = {
     }),
 
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+      clientId: process.env.GOOGLE_OAUTH_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET || '',
     })
   ],
 
@@ -65,8 +65,7 @@ const authOptions: NextAuthOptions = {
             token.email = data.email
             token.fullname = data.fullname
             token.role = data.role
-          }
-        )
+          })
       }
       return token;
     },

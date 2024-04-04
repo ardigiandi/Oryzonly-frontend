@@ -47,7 +47,6 @@ export default function Loginviews() {
         }
     }
 
-
     // Password Visible
     const [passwordVisible, setPasswordVisible] = useState(false)
     const tooglePasswordVisibility = () => {
@@ -117,7 +116,7 @@ export default function Loginviews() {
 
                 <button 
                 className="w-full py-4 px-12 lg:px-[60px] text-sm lg:text-base font-semibold text-center rounded-lg border-2 border-gray-200"
-                onClick={() => signIn("google", { callbackUrl, redirect: false })}
+                onClick={() => signIn("googl    e", { callbackUrl, redirect: false })}
                 type="button"
                 >
                     sign in with google
