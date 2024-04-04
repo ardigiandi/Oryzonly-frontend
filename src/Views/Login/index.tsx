@@ -73,7 +73,7 @@ export default function Loginviews() {
             title="Hi, Welcome Back!"
             description="Glad to see you again! Enter your credentials to access your account
             and explore what awaits you. We're thrilled to have you back!"
-            image="/login.png"
+            image="/Login.png"
             link="/auth/register"
             linkText="Don't have an account? "
             text="Register"
