@@ -7,7 +7,7 @@ import Button from "@/components/ui/button"
 
 export default function Navbar() {
 
-    const {push} = useRouter()
+    const { push } = useRouter()
     const login = () => {
         push('/auth/login')
     }
@@ -19,7 +19,7 @@ export default function Navbar() {
     const toogleNavbar = () => {
         setIsClick(!isClick);
     }
-    
+
 
     return (
         <nav className="max-w-6xl mx-auto flex flex-col">
@@ -93,14 +93,20 @@ export default function Navbar() {
                             <a href="" className="text-base font-semibold text-white">Contact</a>
                         </li>
                     </ul>
-
-                    <Button
-                        className="bg-white py-4 flex justify-center rounded-xl w-full"
+                    
+                    {data ? <button
+                        className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
+                        onClick={() => signOut()}
                         type="button"
-                        onClick={login}
+                    >
+                        Logout
+                    </button> : <button
+                        className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
+                        onClick={() => signIn()}
+                        type="button"
                     >
                         Login
-                    </Button>
+                    </button>}
                 </div>
             )}
         </nav>
