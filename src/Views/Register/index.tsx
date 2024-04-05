@@ -2,11 +2,11 @@ import Image from "next/image"
 import { FormEvent, useEffect } from "react"
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Link from "next/link";
 import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import AuthLayouts from "@/components/layouts/Authlayouts";
 import { signIn } from "next-auth/react";
+import authService from "@/services/auth";
 
 export default function Registerviews() {
 
@@ -29,13 +29,7 @@ export default function Registerviews() {
             password: form.password.value,
         }
 
-        const result = await fetch('/api/user/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
+        const result = await authService.registerAccount(data)
 
         if (result.status === 200) {
             form.reset()

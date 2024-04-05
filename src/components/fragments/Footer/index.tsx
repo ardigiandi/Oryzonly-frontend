@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="max-w-6xl mx-auto flex flex-col gap-y-12 lg:py-[160px] py-[70px]">
                 <div className="flex flex-col lg:flex-row justify-between items-start">
                     <div className="flex flex-col gap-y-8 lg:w-[455px] px-5 lg:px-0">
-                        <Image src="/footer.svg" width={155} height={34} alt="logo" priority={true} className="h-auto" />
+                        <Image src="/footer.svg" width={155} height={34} alt="logo" priority={true} className="h-[34px]" />
                         <h1 className="text-sm text-white font-semibold">
                             Stay connected with us! Follow our latest updates on social media
                             and subscribe to our newsletter for exclusive information. Be part
