@@ -9,7 +9,7 @@ const Hero1 = () => {
                 <h1
                     className="text-3xl lg:text-[40px] text-center lg:text-left font-semibold text-navy leading-tight"
                 >
-                    Exploration of Science and Creativity With
+                    Exploration of Science and Creativity With{' '}
                     <span className="text-ungu">Oryzonly</span>
                 </h1>
                 <p className="lg:text-base text-gray-600 text-sm text-center lg:text-left">

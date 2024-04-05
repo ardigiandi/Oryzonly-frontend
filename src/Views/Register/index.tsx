@@ -14,7 +14,9 @@ export default function Registerviews() {
     const [Error, setError] = useState('')
 
 
-    const { push } = useRouter()
+    const { push, query } = useRouter()
+
+    const callbackUrl: any = query.callbackUrl || '/auth/login'
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -74,7 +76,7 @@ export default function Registerviews() {
             and explore what awaits you. We're thrilled to have you back!"
             image="/register.png"
             link="/auth/login"
-            linkText="Don't have an account? "
+            linkText="Have an Account? "
             text="Login"
         >
             <form onSubmit={handleSubmit} className="mt-[50px] space-y-5">
@@ -84,7 +86,7 @@ export default function Registerviews() {
                     type="text"
                     name="fullname"
                     id="fullname"
-                    placeholder="enter your name.."
+                    placeholder="enter your name"
                     Image="/user.svg"
                     onChange={handleInputValue}
                 />
@@ -121,8 +123,17 @@ export default function Registerviews() {
                     type="submit">
                     {isLoading ? 'Loading' : 'Create Your Account'}
                 </Button>
-            </form>
 
+                <Button
+                    className="text-base text-navy font-semibold"
+                    border="border-2 border-gray-300"
+                    type="button"
+                    Image={"/ic_google.svg"}
+                    onClick={() => signIn("google", { callbackUrl, redirect: false })}
+                >
+                    Sign up with Google
+                </Button>
+            </form>
         </AuthLayouts>
     )
 }
