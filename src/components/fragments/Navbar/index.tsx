@@ -7,11 +7,6 @@ import Button from "@/components/ui/button"
 
 export default function Navbar() {
 
-    const { push } = useRouter()
-    const login = () => {
-        push('/auth/login')
-    }
-
     const { data }: any = useSession()
     // Toggle Navbar
     const [isClick, setIsClick] = useState(false);
@@ -46,12 +41,8 @@ export default function Navbar() {
                     </li>
                 </ul>
 
-                <div onClick={toogleNavbar} className="block lg:hidden">
-                    {isClick ? (
-                        <Image src="/x.svg" width={24} height={24} alt="hamburger" priority={true} />
-                    ) : (
-                        <Image src="/menu.svg" width={24} height={24} alt="hamburger" priority={true} />
-                    )}
+                <div onClick={toogleNavbar} className="block lg:hidden cursor-pointer">
+                    <Image src="/menu.svg" width={24} height={24} alt="hamburger" priority={true} />
                 </div>
 
 
@@ -73,9 +64,10 @@ export default function Navbar() {
 
             {isClick && (
                 <div
-                    className="bg-ungu absolute w-full px-6 top-28 py-6"
+                    className="bg-ungu absolute w-full px-6 top-0 py-6"
                 >
-                    <ul className="flex flex-col gap-y-5">
+                    <Image onClick={toogleNavbar} src="/x.svg" width={24} height={24} alt="hamburger" priority={true} className="absolute top-10 right-5" />
+                    <ul className="flex flex-col gap-y-5 mt-10">
                         <li>
                             <a href="" className="text-base font-semibold text-white">Home</a>
                         </li>
@@ -92,7 +84,7 @@ export default function Navbar() {
                             <a href="" className="text-base font-semibold text-white">Contact</a>
                         </li>
                     </ul>
-                    
+
                     {data ? <button
                         className="bg-white my-5 py-3 w-full text-base font-semibold text-black rounded-xl"
                         onClick={() => signOut()}
