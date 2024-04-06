@@ -1,15 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
 import { signIn, signOut, useSession } from "next-auth/react"
 import Button from "@/components/ui/button"
+import { usePathname } from "next/navigation"
 
 export default function Navbar() {
 
 
     const { data }: any = useSession()
-    // Toggle Navbar
     const [isClick, setIsClick] = useState(false);
     const toogleNavbar = () => {
         setIsClick(!isClick);
@@ -20,24 +19,31 @@ export default function Navbar() {
         setIsMore(!isMore);
     }
 
+    const path = usePathname()
+
+    const links = [
+        { href: "/", text: "Home" },
+        { href: "/courses", text: "Course" },
+        { href: "/contact", text: "Services" },
+    ]
+
 
     return (
         <nav className="relative max-w-6xl mx-auto flex flex-col">
-            <div className="flex flex-row mt-11 items-center px-5 w-full justify-between">
+            <div className="flex flex-row mt-8 items-center px-5 w-full justify-between">
                 <div className="w-full lg:w-auto">
                     <Image src="/Frame 10.svg" alt="logo" width={155} height={34} priority={true} className="h-[34px]" />
                 </div>
 
                 <ul className="flex-row gap-x-10 hidden lg:flex">
-                    <li>
-                        <Link href="/" className="text-base font-semibold text-navy">Home</Link>
-                    </li>
-                    <li>
-                        <Link href="/courses" className="text-base font-semibold text-navy">Course</Link>
-                    </li>
-                    <li>
-                        <Link href="/services" className="text-base font-semibold text-navy">Services</Link>
-                    </li>
+                    {links.map((l) => (
+                        <li key={l.href}
+                        >
+                            <Link href={l.href} className={`${l.href === path ? "text-ungu" : " text-navy"} text-base font-semibold`}>
+                                {l.text}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
 
                 <div onClick={toogleNavbar} className="lg:hidden cursor-pointer flex justify-end">
@@ -94,22 +100,22 @@ export default function Navbar() {
                 <div
                     className={`${isMore ? "block" : "hidden"}  w-full bottom-[110px] flex justify-center absolute`}>
                     {data ?
-                        <Button 
-                        onClick={() => signOut()} 
-                        className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black "
-                        type="button"
+                        <Button
+                            onClick={() => signOut()}
+                            className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black "
+                            type="button"
                         >
                             Logout
                         </Button> :
-                        <Button 
-                        onClick={() => signIn()} 
-                        className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black"
-                        type="button"
+                        <Button
+                            onClick={() => signIn()}
+                            className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black"
+                            type="button"
                         >
                             Login
                         </Button>}
                 </div>
             </div>
-        </nav>
+        </nav >
     )
 }
