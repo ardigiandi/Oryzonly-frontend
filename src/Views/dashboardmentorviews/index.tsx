@@ -8,9 +8,9 @@ export default function Mentorviews() {
         // Mengatur nilai awal berdasarkan lebar layar saat komponen dimuat
         const setInitialTooglesidebar = () => {
             if (window.innerWidth >= 1024) { // Mode desktop
-                setTooglesidebar(true);
-            } else { // Mode mobile
                 setTooglesidebar(false);
+            } else { // Mode mobile
+                setTooglesidebar(true);
             }
         };
         setInitialTooglesidebar();
@@ -35,7 +35,7 @@ export default function Mentorviews() {
                 <div className="mt-[60px] space-y-6">
                     <Image
                         onClick={() => setTooglesidebar(tooglesidebar ? false : true)}
-                        src="/x(1).svg"
+                        src="/x.svg"
                         width={20}
                         height={20}
                         alt=""

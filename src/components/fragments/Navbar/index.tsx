@@ -1,11 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { signIn, signOut, useSession } from "next-auth/react"
 import Button from "@/components/ui/button"
 
 export default function Navbar() {
+
 
     const { data }: any = useSession()
     // Toggle Navbar
@@ -67,7 +68,7 @@ export default function Navbar() {
 
 
             <div
-                className={`${isClick ? 'block' : 'hidden'} bg-ungu w-full px-2 h-[90px] fixed bottom-0 z-10 flex lg:hidden items-center rounded-lg`}
+                className={`${isClick ? 'block' : 'hidden'} bg-ungu w-full h-[90px] fixed bottom-0 z-10 flex lg:hidden items-center rounded-lg`}
             >
                 <ul className="flex justify-between w-full px-8 ">
                     <li className="flex-col">
@@ -97,18 +98,18 @@ export default function Navbar() {
                 </ul>
 
                 <div
-                    className={`${isMore ? "block" : "hidden"} fixed bottom-[100px] right-0 left-0 flex gap-x-7 justify-center`}>
+                    className={`${isMore ? "block" : "hidden"}  w-full bottom-[110px] flex justify-center absolute`}>
                     {data ?
                         <Button 
                         onClick={() => signOut()} 
-                        className="bg-soft text-base font-semibold px-10 py-3 rounded-xl border border-black"
+                        className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black "
                         type="button"
                         >
                             Logout
                         </Button> :
                         <Button 
                         onClick={() => signIn()} 
-                        className="bg-soft text-base font-semibold px-10 py-3 rounded-xl border border-black"
+                        className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black"
                         type="button"
                         >
                             Login
