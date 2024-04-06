@@ -100,18 +100,18 @@ export default function Navbar() {
                     className={`${isMore ? "block" : "hidden"} fixed bottom-[100px] right-0 left-0 flex gap-x-7 justify-center`}>
                     {data ?
                         <Button 
-                        onClick={() => signIn()} 
-                        className="bg-soft text-base font-semibold px-10 py-3 rounded-xl border border-black"
-                        type="button"
-                        >
-                            Login
-                        </Button> :
-                        <Button 
                         onClick={() => signOut()} 
                         className="bg-soft text-base font-semibold px-10 py-3 rounded-xl border border-black"
                         type="button"
                         >
                             Logout
+                        </Button> :
+                        <Button 
+                        onClick={() => signIn()} 
+                        className="bg-soft text-base font-semibold px-10 py-3 rounded-xl border border-black"
+                        type="button"
+                        >
+                            Login
                         </Button>}
                 </div>
             </div>
