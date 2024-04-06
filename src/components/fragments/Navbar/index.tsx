@@ -38,16 +38,10 @@ export default function Navbar() {
                     <li>
                         <Link href="/services" className="text-base font-semibold text-navy">Services</Link>
                     </li>
-                    <li>
-                        <Link href="/instructor" className="text-base font-semibold text-navy">Instructor</Link>
-                    </li>
-                    <li>
-                        <Link href="/contact" className="text-base font-semibold text-navy">Contact</Link>
-                    </li>
                 </ul>
 
                 <div onClick={toogleNavbar} className="lg:hidden cursor-pointer flex justify-end">
-                    <Image src="/menu.svg" width={24} height={24} alt="hamburger" priority={true} />
+                    {isClick ? <Image src="/x.svg" alt="" width={24} height={24} priority={true} /> : <Image src="/menu.svg" alt="" width={24} height={24} priority={true} />}
                 </div>
 
 
