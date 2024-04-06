@@ -18,6 +18,7 @@ const config: Config = {
       colors: {
         ungu :  '#5D00FF',
         navy : '#211B3D',
+        lightpurple: '#FBF9FF',
       },
       fontFamily: {
         'manrope': ['Manrope', 'sans-serif'],

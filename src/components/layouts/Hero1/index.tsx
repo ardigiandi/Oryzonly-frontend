@@ -1,6 +1,12 @@
 import Image from "next/image"
+import { useRouter } from "next/router"
 
 const Hero1 = () => {
+
+    const {push} = useRouter()
+    const handlepush = () => {
+        push('/dashboardmentor')
+    }
     return (
         <section
             className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between mt-16 items-center px-5 lg:px-0"
@@ -22,6 +28,8 @@ const Hero1 = () => {
                     className="bg-ungu px-9 py-4 lg:px-[60px] flex justify-center lg:py-[18px] text-sm lg:text-base text-white font-semibold rounded-xl"
                 >Start Learning Now!</a>
             </div>
+
+            <h1 onClick={handlepush}>here</h1>
 
             <Image src="/main hero.png" alt="" width={500} height={500} className="w-1/2 hidden lg:block" />
         </section>

@@ -73,7 +73,6 @@ export default function Navbar() {
 
             {isClick && (
                 <div
-                    id="dropdown-menu"
                     className="bg-ungu absolute w-full px-6 top-28 py-6"
                 >
                     <ul className="flex flex-col gap-y-5">

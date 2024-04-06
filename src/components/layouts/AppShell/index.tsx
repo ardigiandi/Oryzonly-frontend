@@ -3,8 +3,8 @@ import Navbar from "../../fragments/Navbar"
 import Footer from "../../fragments/Footer";
 import { useRouter } from "next/router";
 
-const disableNavbar = ["/auth/login" , "/auth/register"]
-const disableFooter = ["/auth/login" , "/auth/register"]
+const disableNavbar = ["/auth/login" , "/auth/register", "/dashboardmentor"]
+const disableFooter = ["/auth/login" , "/auth/register", "/dashboardmentor"]
 
 type AppShellProps = { children: React.ReactNode }
 export default function AppShell(props: AppShellProps) {
