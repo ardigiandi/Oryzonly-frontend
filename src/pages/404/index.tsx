@@ -16,7 +16,7 @@ export default function errorPage() {
                     <Link href={"/"}>Back to Home</Link>
                 </button>
             </div>
-            <Image src="/404.png" alt="404" width={650} height={500} />
+            <Image src="/404.png" alt="404" width={650} height={500} priority={true} />
         </section>  
     )
 }

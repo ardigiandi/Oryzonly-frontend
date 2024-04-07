@@ -112,7 +112,7 @@ export default function Footer() {
                 width={105}
                 height={80}
                 priority={true}
-                className="absolute w-[105px] h-[80px] bottom-0 right-20 hidden lg:block"
+                className="absolute w-[105px] h-[80px] bottom-0 right-20 hidden lg:block w"
             />
         </footer>
     )

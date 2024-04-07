@@ -4,16 +4,21 @@ import { useEffect, useState } from "react"
 import { signIn, signOut, useSession } from "next-auth/react"
 import Button from "@/components/ui/button"
 import { usePathname } from "next/navigation"
+import { motion } from "framer-motion"
+import { useRouter } from "next/router"
 
 export default function Navbar() {
 
-
+    // meengambil data
     const { data }: any = useSession()
+
+    // Fungsi navbar
     const [isClick, setIsClick] = useState(false);
     const toogleNavbar = () => {
         setIsClick(!isClick);
     }
 
+    // Fungsi more
     const [isMore, setIsMore] = useState(false)
     const toogleMore = () => {
         setIsMore(!isMore);
@@ -21,6 +26,7 @@ export default function Navbar() {
 
     const path = usePathname()
 
+    // mapping menu navbar desktop
     const links = [
         { href: "/", text: "Home" },
         { href: "/courses", text: "Course" },
@@ -28,11 +34,33 @@ export default function Navbar() {
     ]
 
 
+    const router = useRouter();
+    const [activeIndex, setActiveIndex] = useState(-1)
+    const handleClick = (index: number, href: string) => {
+        setActiveIndex(index); // Set indeks menu yang sedang aktif
+        setIsClick(true); // Tutup navbar saat menu diklik
+        router.push(href); // Navigasi ke URL yang sesuai
+    }
+
+    // mapping menu navbar mobile
+    const linksnavbar: { href?: string; Image: string; text: string; onClick?: () => void; }[] = [
+        { href: "/", Image: "/home.svg", text: "Home" },
+        { href: "/courses", Image: "/book (1).svg", text: "Course" },
+        { href: "/contact", Image: "/settings.svg", text: "Services" },
+        { Image: "/titik_tiga.svg", text: "More", onClick: toogleMore },
+    ]
+
     return (
         <nav className="relative max-w-6xl mx-auto flex flex-col">
             <div className="flex flex-row mt-8 items-center px-5 w-full justify-between">
                 <div className="w-full lg:w-auto">
-                    <Image src="/Frame 10.svg" alt="logo" width={155} height={34} priority={true} className="h-[34px]" />
+                    <Image
+                        src="/Frame 10.svg"
+                        alt="logo"
+                        width={155}
+                        height={34}
+                        priority={true}
+                        className="h-[34px]" />
                 </div>
 
                 <ul className="flex-row gap-x-10 hidden lg:flex">
@@ -46,9 +74,13 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                <div onClick={toogleNavbar} className="lg:hidden cursor-pointer flex justify-end">
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={toogleNavbar}
+                    className="lg:hidden cursor-pointer flex justify-end">
                     {isClick ? <Image src="/x.svg" alt="" width={24} height={24} priority={true} /> : <Image src="/menu.svg" alt="" width={24} height={24} priority={true} />}
-                </div>
+                </motion.div>
 
 
                 {data ? <Button
@@ -67,38 +99,45 @@ export default function Navbar() {
             </div>
 
 
-            <div
+            <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: isClick ? 0 : 20 }}
+                transition={{ type: "spring", stiffness: 120 }}
                 className={`${isClick ? 'block' : 'hidden'} bg-ungu w-full h-[90px] fixed bottom-0 z-10 flex lg:hidden items-center rounded-lg`}
             >
                 <ul className="flex justify-between w-full px-8 ">
-                    <li className="flex-col">
-                        <a href="" className="flex flex-col justify-center items-center">
-                            <Image src="/home.svg" alt="" width={24} height={24} priority={true} className="text-white" />
-                            <span className="text-sm font-semibold text-white">Home</span>
-                        </a>
-                    </li>
-                    <li className="flex-col">
-                        <a href="" className="flex flex-col justify-center items-center">
-                            <Image src="/book (1).svg" alt="" width={24} height={24} priority={true} className="text-white" />
-                            <span className="text-sm font-semibold text-white">Course</span>
-                        </a>
-                    </li>
-                    <li className="flex-col">
-                        <a href="" className="flex flex-col justify-center items-center">
-                            <Image src="/settings.svg" alt="" width={24} height={24} priority={true} className="text-white" />
-                            <span className="text-sm font-semibold text-white">Services</span>
-                        </a>
-                    </li>
-                    <li className="flex-col">
-                        <div onClick={toogleMore} className="flex flex-col justify-center items-center">
-                            <Image src="/titik_tiga.svg" alt="" width={24} height={24} priority={true} className="text-white" />
-                            <span className="text-sm font-semibold text-white">More</span>
-                        </div>
-                    </li>
+                    {linksnavbar.map((link, index) => (
+                        <motion.li
+                            key={index}
+                            whileHover={{ scale: 1.1 }}
+                            className="flex-col"
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => handleClick(index, link.href || '')}
+                        >
+                            <Link
+                                href={link.href || ''}
+                                onClick={link.onClick}
+                                className="flex flex-col justify-center items-center gap-y-2"
+                            >
+                                <Image
+                                    src={link.Image}
+                                    alt=""
+                                    width={24}
+                                    height={24}
+                                    priority={true} />
+                                <span className={`${index === activeIndex ? "text-navy" : "text-white"} text-base font-semibold`}>
+                                    {link.text}
+                                </span>
+                            </Link>
+                        </motion.li>
+                    ))}
                 </ul>
 
-                <div
-                    className={`${isMore ? "block" : "hidden"}  w-full bottom-[110px] flex justify-center absolute`}>
+                <motion.li
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: isMore ? 0 : 10 }}
+                    className={`${isMore ? "block" : "hidden"}  w-full bottom-[110px] flex justify-center absolute`}
+                >
                     {data ?
                         <Button
                             onClick={() => signOut()}
@@ -113,9 +152,10 @@ export default function Navbar() {
                             type="button"
                         >
                             Login
-                        </Button>}
-                </div>
-            </div>
+                        </Button>
+                    }
+                </motion.li>
+            </motion.div>
         </nav >
     )
 }
