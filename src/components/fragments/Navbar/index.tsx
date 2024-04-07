@@ -34,10 +34,14 @@ export default function Navbar() {
     ]
 
 
-    const router = useRouter();
-    const [activeIndex, setActiveIndex] = useState(-1)
+    const router = useRouter()
+    const [activeIndex, setActiveIndex] = useState(0)
     const handleClick = (index: number, href: string) => {
-        setActiveIndex(index); // Set indeks menu yang sedang aktif
+        if (activeIndex === linksnavbar.length - 1 && activeIndex === index ) {
+            setActiveIndex(-1)
+        } else {
+            setActiveIndex(index)
+        }
         setIsClick(true); // Tutup navbar saat menu diklik
         router.push(href); // Navigasi ke URL yang sesuai
     }
@@ -124,8 +128,9 @@ export default function Navbar() {
                                     alt=""
                                     width={24}
                                     height={24}
-                                    priority={true} />
-                                <span className={`${index === activeIndex ? "text-navy" : "text-white"} text-base font-semibold`}>
+                                    priority={true} 
+                                    />
+                                <span className={`${index === activeIndex ? "text-navy" : "text-white"} text-xs font-semibold`}>
                                     {link.text}
                                 </span>
                             </Link>
