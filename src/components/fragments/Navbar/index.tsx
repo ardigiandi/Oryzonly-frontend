@@ -146,14 +146,14 @@ export default function Navbar() {
                     {data ?
                         <Button
                             onClick={() => signOut()}
-                            className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black "
+                            className="bg-soft text-base font-semibold w-full fixed py-3 rounded-md border border-gray-300"
                             type="button"
                         >
                             Logout
                         </Button> :
                         <Button
                             onClick={() => signIn()}
-                            className="bg-soft text-base font-semibold w-full fixed py-3 rounded-xl border border-black"
+                            className="bg-soft text-base font-semibold w-full fixed py-3 rounded-md border border-gray-300"
                             type="button"
                         >
                             Login
