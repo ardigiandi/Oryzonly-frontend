@@ -29,7 +29,7 @@ const Hero1 = () => {
                 >Start Learning Now!</a>
             </div>
 
-            <h1 onClick={handlepush}>here</h1>
+            <h1 onClick={handlepush} className="mt-10">here</h1>
 
             <Image src="/main hero.png" alt="" width={500} height={500} priority={true} className="w-1/2 hidden lg:block" />
         </section>
