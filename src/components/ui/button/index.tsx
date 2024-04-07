@@ -13,7 +13,7 @@ const Button = (props: Propstypes) => {
 
     const { children, onClick, style, className, border, type} = props
     return (
-        <div className="flex flex-col gap-y-5 mt-5">
+        <div className="flex flex-col gap-y-5">
             <button
                 onClick={onClick}
                 style={style}

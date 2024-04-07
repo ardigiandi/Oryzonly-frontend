@@ -21,7 +21,7 @@ export default function WithAuth(
         secret: process.env.NEXTAUTH_SECRET,
       });
       if (!token && !authPage.includes(pathname)) {
-        const url = new URL("/auth/login");
+        const url = new URL("/auth/login", req.url);
         url.searchParams.set("callbackUrl", encodeURI(req.url));
         return NextResponse.redirect(url);
       }

@@ -8,12 +8,12 @@ const listSidebarItem = [
     {
         title: 'My Course',
         icon: 'note',
-        url: '/dashboardmentor'
+        url: '/mentor'
     },
     {
         title: 'Settings',
         icon: 'setting',
-        url: '/dashboardmentor/settings'
+        url: '/mentor/settings'
     },
 ]
 
