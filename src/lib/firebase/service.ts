@@ -12,6 +12,8 @@ import app from "./init";
 
 const firestore = getFirestore(app);
 
+
+// MENGAMBIL DATA
 export async function retriveData(collectionName: string) {
   const snapshot = await getDocs(collection(firestore, collectionName));
   const data = snapshot.docs.map((doc) => ({
@@ -42,7 +44,6 @@ export async function retriveDataByField(
     id: doc.id,
     ...doc.data(),
   }));
-
   return data;
 }
 

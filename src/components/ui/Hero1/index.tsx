@@ -5,7 +5,7 @@ const Hero1 = () => {
 
     const {push} = useRouter()
     const handlepush = () => {
-        push('/dashboardmentor')
+        push('/mentor')
     }
     return (
         <section
@@ -31,7 +31,7 @@ const Hero1 = () => {
 
             <h1 onClick={handlepush}>here</h1>
 
-            <Image src="/main hero.png" alt="" width={500} height={500} className="w-1/2 hidden lg:block" />
+            <Image src="/main hero.png" alt="" width={500} height={500} priority={true} className="w-1/2 hidden lg:block" />
         </section>
     )
 }

@@ -1,9 +1,10 @@
-import Mentorviews from "@/Views/dashboardmentorviews"
+import Mycourse from "@/Views/mentor/mycourse"
+
 
 const dashboardMentor = () => {
     return (
         <>
-            <Mentorviews/>
+            <Mycourse/>
         </>
     )
 }
