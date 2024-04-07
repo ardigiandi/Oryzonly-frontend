@@ -50,7 +50,7 @@ export default function Navbar() {
     const linksnavbar: { href?: string; Image: string; text: string; onClick?: () => void; }[] = [
         { href: "/", Image: "/home.svg", text: "Home" },
         { href: "/courses", Image: "/book (1).svg", text: "Course" },
-        { href: "/contact", Image: "/settings.svg", text: "Services" },
+        { href: "/settings", Image: "/settings.svg", text: "Services" },
         { Image: "/titik_tiga.svg", text: "More", onClick: toogleMore },
     ]
 
@@ -130,7 +130,7 @@ export default function Navbar() {
                                     height={24}
                                     priority={true} 
                                     />
-                                <span className={`${index === activeIndex ? "text-navy" : "text-white"} text-xs font-semibold`}>
+                                <span className={`${index === activeIndex ? "text-pink-400" : "text-white"} text-xs font-semibold`}>
                                     {link.text}
                                 </span>
                             </Link>

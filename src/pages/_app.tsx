@@ -4,6 +4,7 @@ import { Manrope } from 'next/font/google'
 import { SessionProvider } from "next-auth/react";
 import Navbar from "@/components/fragments/Navbar";
 import { useRouter } from "next/router";
+import Footer from "@/components/fragments/Footer";
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -11,6 +12,7 @@ const manrope = Manrope({
 })
 
 const disableNavbar = ['auth', 'mentor']
+const disableFooter = ['auth', 'mentor']
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 
@@ -18,8 +20,9 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
   return (
     <SessionProvider session={session}>
       <div className={manrope.className}>
-         {!disableNavbar.includes(pathname.split("/")[1]) && <Navbar />}
-          <Component {...pageProps} />
+        {!disableNavbar.includes(pathname.split("/")[1]) && <Navbar />}
+        <Component {...pageProps} />
+        {!disableFooter.includes(pathname.split('/')[1]) && <Footer />}
       </div>
     </SessionProvider>
   )
