@@ -94,7 +94,7 @@ const Mentorlayouts = (props: propPages) => {
                     onClick={() => signOut()} 
                     className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-md flex gap-x-4 items-center">
                         <Image 
-                        src={'/logout.svg'} 
+                        src={'/Logout.svg'} 
                         alt="" 
                         width={20} height={20} 
                         priority={true}/>
