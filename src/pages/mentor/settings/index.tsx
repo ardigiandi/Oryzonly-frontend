@@ -1,9 +1,9 @@
-import Mentorlayouts from "@/components/layouts/Mentorlayouts";
+import Sidebar from "@/components/fragments/Sidebar_mentor";
 
 export default function Settings () {
     return(
-        <Mentorlayouts>
-            <h1>settings</h1>
-        </Mentorlayouts>
+        <div>
+            <h1>Settings</h1>
+        </div>
     )
 }

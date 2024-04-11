@@ -22,7 +22,7 @@ const Input = (props: Propstypes) => {
     const { label, name, type, placeholder, value, onChange, children, onSubmit } = props
     return (
         <div>
-            <label htmlFor={name} className="text-base text-navy font-semibold">
+            <label htmlFor={name} className="text-base text-navy font-semibold ">
                 {label}
             </label>
             <div className="relative mt-2">

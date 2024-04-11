@@ -1,33 +1,26 @@
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import { useRouter } from "next/router"
-import Link from "next/link"
-import { signOut } from "next-auth/react"
-import { motion } from "framer-motion"
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { signOut } from "next-auth/react";
+import { motion } from "framer-motion";
 
-const listSidebarItem = [
-    {
-        title: 'My Course',
-        icon: 'note',
-        url: '/mentor'
-    },
-    {
-        title: 'Settings',
-        icon: 'setting',
-        url: '/mentor/settings'
-    },
-]
-
-type propPages = {
-    children: React.ReactNode
+type SidebarItem = {
+    title: string;
+    icon: string;
+    url: string;
 }
 
-const Mentorlayouts = (props: propPages) => {
-    const { pathname } = useRouter()
-    const { children } = props
+type SidebarProps = {
+    children: React.ReactNode;
+    sidebarItems: SidebarItem[];
+}
+
+const SidebarMentor = ({ children, sidebarItems }: SidebarProps) => {
+    const { pathname } = useRouter();
 
     // FUNGSI SIDEBAR
-    const [toggleSidebar, setToggleSidebar] = useState(false)
+    const [toggleSidebar, setToggleSidebar] = useState(false);
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 1024) {
@@ -53,7 +46,6 @@ const Mentorlayouts = (props: propPages) => {
 
     return (
         <section className="flex flex-row bg-lightpurple h-screen">
-            {/* INI SIDEBAR */}
             <motion.div
                 initial={{ opacity: 0, x: -300 }}
                 animate={{ opacity: 1, x: toggleSidebar ? 0 : -10 }}
@@ -88,7 +80,18 @@ const Mentorlayouts = (props: propPages) => {
                 </div>
 
                 <div className="flex flex-col px-6 mt-12 gap-y-5">
-                    {listSidebarItem.map((list) => (
+                    <button
+                        type="button"
+                        onClick={() => signOut()}
+                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center">
+                        <Image
+                            src='/home_sidebar.svg'
+                            alt=""
+                            width={20} height={20}
+                            priority={true} />
+                        Back to Home
+                    </button>
+                    {sidebarItems.map((list) => (
                         <Link href={list.url} key={list.title}>
                             <div className={`${pathname === list.url ? 'bg-soft text-white' : 'text-navy'} flex items-center text-sm lg:text-base gap-x-4 px-4 py-3 rounded-lg cursor-pointer`}>
                                 <Image
@@ -114,7 +117,6 @@ const Mentorlayouts = (props: propPages) => {
                     </button>
                 </div>
             </motion.div>
-            {/* END SIDEBAR */}
 
             <div className="flex flex-col mt-8 lg:mt-[60px] gap-y-[52px]">
                 <div className="space-y-4 px-7 ">
@@ -147,4 +149,4 @@ const Mentorlayouts = (props: propPages) => {
     )
 }
 
-export default Mentorlayouts
+export default SidebarMentor

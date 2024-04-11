@@ -37,7 +37,7 @@ export default function Navbar() {
     const router = useRouter()
     const [activeIndex, setActiveIndex] = useState(0)
     const handleClick = (index: number, href: string) => {
-        if (activeIndex === linksnavbar.length - 1 && activeIndex === index ) {
+        if (activeIndex === linksnavbar.length - 1 && activeIndex === index) {
             setActiveIndex(-1)
         } else {
             setActiveIndex(index)
@@ -128,8 +128,8 @@ export default function Navbar() {
                                     alt=""
                                     width={24}
                                     height={24}
-                                    priority={true} 
-                                    />
+                                    priority={true}
+                                />
                                 <span className={`${index === activeIndex ? "text-pink-400" : "text-white"} text-xs font-semibold`}>
                                     {link.text}
                                 </span>
