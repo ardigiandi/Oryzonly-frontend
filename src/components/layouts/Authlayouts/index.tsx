@@ -14,8 +14,8 @@ type Propstypes = {
 const AuthLayouts = (props: Propstypes) => {
     const { title, description, children, image, link, linkText, text } = props
     return (
-        <section className="max-w-6xl mx-auto flex justify-between my-[50px] lg:my-[120px] gap-x-[100px] px-5 lg:px-0">
-            <Image src={image} width={600} height={600} alt="Login" priority={true} className="hidden lg:block" />
+        <section className="max-w-6xl mx-auto flex justify-between my-[50px] lg:my-[120px] gap-x-[120px] px-5 lg:px-0 items-center">
+            <Image src={image} width={480} height={500} alt="Login" priority={true} className="hidden lg:block w-[500px] h-[500px]" />
             <div className="flex flex-col mt-10">
                 <h1 className="text-3xl text-navy font-semibold">{title}</h1>
                 <p className="text-base text-gray-500 mt-4">
