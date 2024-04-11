@@ -30,7 +30,9 @@ export default function Navbar() {
     const links = [
         { href: "/", text: "Home" },
         { href: "/courses", text: "Course" },
-        { href: "/contact", text: "Services" },
+        { href: "/students", text: "Services" },
+        { href: "/contact", text: "Instructor" },
+        { href: "/contact", text: "Contact" },
     ]
 
 
@@ -67,7 +69,7 @@ export default function Navbar() {
                         className="h-[34px]" />
                 </div>
 
-                <ul className="flex-row gap-x-10 hidden lg:flex">
+                <ul className="flex-row gap-x-10 hidden lg:flex tracking-[-0.7px]">
                     {links.map((l) => (
                         <li key={l.href}
                         >

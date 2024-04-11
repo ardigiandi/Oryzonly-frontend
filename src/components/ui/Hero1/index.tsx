@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 
 const Hero1 = () => {
 
-    const {push} = useRouter()
+    const { push } = useRouter()
     const handlepush = () => {
         push('/mentor')
     }
@@ -13,19 +13,19 @@ const Hero1 = () => {
         >
             <div className="flex flex-col gap-y-8 lg:items-start">
                 <h1
-                    className="text-3xl lg:text-[40px] text-center lg:text-left font-semibold text-navy leading-tight"
+                    className="text-3xl lg:text-[40px] text-center lg:text-left font-semibold text-navy leading-tight tracking-[-0.7px]"
                 >
                     Exploration of Science and Creativity With{' '}
                     <span className="text-ungu">Oryzonly</span>
                 </h1>
-                <p className="lg:text-base text-gray-600 text-sm text-center lg:text-left">
+                <p className="lg:text-base text-gray-600 text-sm text-center lg:text-left tracking-[-0.7px]">
                     Welcome to Oryzonly, your place to explore knowledge and channel your
                     creativity. Get access to expert courses and creative challenges for
                     your unlimited personal growth.
                 </p>
                 <a
                     href=""
-                    className="bg-ungu px-9 py-4 lg:px-[60px] flex justify-center lg:py-[18px] text-sm lg:text-base text-white font-semibold rounded-xl"
+                    className="bg-ungu px-9 py-4 lg:px-[60px] flex justify-center lg:py-[18px] text-sm lg:text-base text-white font-semibold rounded-xl tracking-[-0.7px]"
                 >Start Learning Now!</a>
             </div>
 

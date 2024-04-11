@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className="flex flex-col lg:flex-row justify-between items-start">
                     <div className="flex flex-col gap-y-8 lg:w-[455px] px-5 lg:px-0">
                         <Image src="/footer.svg" width={155} height={34} alt="logo" priority={true} className="h-[34px]" />
-                        <h1 className="text-sm text-white font-semibold">
+                        <h1 className="text-sm text-white font-semibold tracking-[-0.7px]">
                             Stay connected with us! Follow our latest updates on social media
                             and subscribe to our newsletter for exclusive information. Be part
                             of our ever-growing community in learning and growth.
@@ -24,7 +24,7 @@ export default function Footer() {
                     <div
                         className="flex-wrap lg:gap-x-12 justify-between px-7 mt-12 lg:mt-0 gap-y-10 hidden lg:flex"
                     >
-                        <div className="flex flex-col gap-y-4">
+                        <div className="flex flex-col gap-y-4 tracking-[-0.7px]">
                             <h1 className="text-xl text-white font-semibold">Company</h1>
                             <ul className="space-y-4">
                                 <li>
@@ -39,7 +39,7 @@ export default function Footer() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex flex-col gap-y-4">
+                        <div className="flex flex-col gap-y-4 tracking-[-0.7px]">
                             <h1 className="text-xl text-white font-semibold">Overview</h1>
                             <ul className="space-y-4">
                                 <li>
@@ -56,7 +56,7 @@ export default function Footer() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex flex-col gap-y-4">
+                        <div className="flex flex-col gap-y-4 tracking-[-0.7px]">
                             <h1 className="text-xl text-white font-semibold">Explore Us</h1>
                             <ul className="space-y-4">
                                 <li>
@@ -73,7 +73,7 @@ export default function Footer() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex flex-col gap-y-4">
+                        <div className="flex flex-col gap-y-4 tracking-[-0.7px]">
                             <h1 className="text-xl text-white font-semibold">Connect Us</h1>
                             <ul className="space-y-4">
                                 <li>
@@ -93,7 +93,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <h1
-                    className="text-sm text-white font-semibold mt-12 flex justify-center text-center px-5 lg:px-0"
+                    className="text-sm text-white font-semibold mt-12 flex justify-center text-center px-5 lg:px-0 tracking-[-0.7px]"
                 >
                     All Rights Reserved • Copyright by Oryzonly Team 2024
                 </h1>

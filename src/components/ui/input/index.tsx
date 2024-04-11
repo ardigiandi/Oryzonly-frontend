@@ -22,7 +22,7 @@ const Input = (props: Propstypes) => {
     const { label, name, type, placeholder, value, onChange, children, onSubmit } = props
     return (
         <div>
-            <label htmlFor={name} className="text-base text-navy font-semibold ">
+            <label htmlFor={name} className="text-base text-navy font-semibold tracking-[-0.7px]">
                 {label}
             </label>
             <div className="relative mt-2">
@@ -30,7 +30,7 @@ const Input = (props: Propstypes) => {
                     name={name}
                     id={name}
                     type={type}
-                    className="w-full px-10 py-[14px] rounded-lg border-2 border-gray-300 focus:outline-none focus:border-ungu"
+                    className="w-full px-10 py-[14px] rounded-lg border-2 border-gray-300 focus:outline-none focus:border-ungu tracking-[-0.7px]"
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}

@@ -6,10 +6,10 @@ const Sponsorship = () => {
             className="max-w-6xl mx-auto flex flex-col justify-center mt-16 lg:mt-12 px-5 lg:px-0"
         >
             <div className="text-center space-y-4">
-                <h1 className="text-2xl lg:text-4xl font-semibold text-navy">
+                <h1 className="text-2xl lg:text-4xl font-semibold text-navy tracking-[-0.7px]">
                     Our Great Allies
                 </h1>
-                <p className="text-sm lg:text-base text-gray-700">
+                <p className="text-sm lg:text-base text-gray-700 tracking-[-0.7px]">
                     Within Our Partnership, we join forces with outstanding allies towards
                     shared success.
                 </p>

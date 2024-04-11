@@ -9,11 +9,11 @@ const Hero2 = () => {
 
             <div className="flex flex-col gap-y-8 lg:items-start">
                 <h1
-                    className="text-3xl lg:text-[40px] text-center lg:text-left font-semibold text-navy"
+                    className="text-3xl lg:text-[40px] text-center lg:text-left font-semibold text-navy tracking-[-0.7px]"
                 >
                     Unlock Your Potential with Knowledge.
                 </h1>
-                <p className="text-sm lg:text-base text-gray-700 text-center lg:text-left">
+                <p className="text-sm lg:text-base text-gray-700 text-center lg:text-left tracking-[-0.7px]">
                     Our educational platform offers a gateway to enriching experiences and
                     empowering knowledge. Dive into a diverse array of subjects, curated
                     by experts, and embark on a journey of lifelong learning

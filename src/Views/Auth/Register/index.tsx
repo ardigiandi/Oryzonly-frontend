@@ -111,14 +111,14 @@ export default function Registerviews() {
                     )}
                 </Input>
                 <Button
-                    className="text-base text-white font-semibold"
+                    className="text-base text-white font-semibold tracking-[-0.7px]"
                     style={{ backgroundColor: formFilled ? "#5D00FF" : "#BFBFBF" }}
                     type="submit">
                     {isLoading ? 'Loading' : 'Create Your Account'}
                 </Button>
 
                 <Button
-                    className="text-base text-navy font-semibold"
+                    className="text-base text-navy font-semibold tracking-[-0.7px]"
                     border="border-2 border-gray-300"
                     type="button"
                     Image={"/ic_google.svg"}
