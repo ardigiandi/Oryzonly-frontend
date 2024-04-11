@@ -65,9 +65,8 @@ export default function Registerviews() {
 
     return (
         <AuthLayouts
-            title="Hi, Welcome Back!"
-            description="Glad to see you again! Enter your credentials to access your account
-            and explore what awaits you. We're thrilled to have you back!"
+            title="Welcome Aboard!"
+            description="We're excited to have you join our community. Begin your journey with us by creating your account. "
             image="/register.png"
             link="/auth/login"
             linkText="Have an Account? "
