@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { motion } from "framer-motion";
-import { title } from "process";
 
 const listSidebarItem = [
     {
@@ -12,16 +11,16 @@ const listSidebarItem = [
         icon: 'note',
         url: '/students',
         text: 'My Courses',
-        description: 'Discover all the courses youre enrolled in, all in one place!'
+        description: 'Discover all the courses you are enrolled in, all in one place!'
     },
     {
-        title: 'Transcation',
+        title: 'Transaction',
         icon: 'moneys',
-        url: '/students/transcation',
-        text: 'My Transcation',
-        description: 'Discover all the courses youre enrolled in, all in one place!'
+        url: '/students/transaction',
+        text: 'Transaction',
+        description: 'Discover all your transactions, all in one place!'
     }
-]
+];
 
 type SidebarProps = {
     children: React.ReactNode;
@@ -30,15 +29,23 @@ type SidebarProps = {
 const SidebarStudents = ({ children }: SidebarProps) => {
     const { pathname } = useRouter();
 
-    // FUNGSI SIDEBAR
-    const [toggleSidebar, setToggleSidebar] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [activeMenu, setActiveMenu] = useState("My Course");
+    const [menuDescription, setMenuDescription] = useState("Discover all the courses you are enrolled in, all in one place!");
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    const handleMenuClick = (text: string, description: string) => {
+        setActiveMenu(text);
+        setMenuDescription(description);
+        setIsSidebarOpen(false);
+    };
+
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 1024) {
-                setToggleSidebar(false);
-            } else {
-                setToggleSidebar(true);
-            }
+            setIsSidebarOpen(window.innerWidth < 1024);
         };
 
         handleResize();
@@ -46,40 +53,25 @@ const SidebarStudents = ({ children }: SidebarProps) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleToggleSidebar = () => {
-        setToggleSidebar(prevState => !prevState);
-    };
-
-    const [isClick, setIsClick] = useState(false);
-    const tooglesidebar = () => {
-        setIsClick(!isClick);
-    }
-
-    const [activeMenu, setActiveMenu] = useState("My Course")
-    const [menuDescription, setMenuDescription] = useState("Discover all the courses you're enrolled in, all in one place!");
-
-    const handleMenuClick = (text: string) => {
-        setActiveMenu(text);
-    }
-    
-    
     return (
         <section className="flex flex-row bg-lightpurple h-screen">
             <motion.div
                 initial={{ opacity: 0, x: -300 }}
-                animate={{ opacity: 1, x: toggleSidebar ? 0 : -10 }}
+                animate={{ opacity: 1, x: isSidebarOpen ? 0 : -10 }}
                 exit={{ opacity: 0, x: -300 }}
                 transition={{ type: 'tween', stiffness: 120, damping: 10 }}
-                className={`${toggleSidebar ? 'hidden' : 'block'} sidebar h-screen w-[300px] bg-white fixed lg:relative`}>
+                className={`${isSidebarOpen ? 'block' : 'hidden'} sidebar h-screen w-[300px] bg-white fixed lg:relative`}
+            >
                 <div className="mt-[60px] space-y-6">
                     <Image
-                        onClick={handleToggleSidebar}
+                        onClick={toggleSidebar}
                         src="/x.svg"
                         width={20}
                         height={20}
                         alt=""
                         priority={true}
-                        className="absolute right-5 top-8 block lg:hidden" />
+                        className="absolute right-5 top-8 block lg:hidden"
+                    />
                     <Image
                         src="/profile_sidebar.png"
                         width={80}
@@ -102,57 +94,65 @@ const SidebarStudents = ({ children }: SidebarProps) => {
                     <button
                         type="button"
                         onClick={() => signOut()}
-                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center">
+                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center"
+                    >
                         <Image
                             src='/home_sidebar.svg'
                             alt=""
                             width={20} height={20}
-                            priority={true} />
+                            priority={true}
+                        />
                         Back to Home
                     </button>
                     {listSidebarItem.map((list) => (
-                        <Link href={list.url} key={list.title} onClick={() => handleMenuClick(list.text)}>
-                            <div className={`${pathname === list.url ? 'bg-soft text-white' : 'text-navy'} flex items-center text-sm lg:text-base gap-x-4 px-4 py-3 rounded-lg cursor-pointer`}>
-                                <Image
-                                    src={`/${list.icon}.svg`}
-                                    alt=""
-                                    width={20}
-                                    height={20}
-                                    priority={true} />
-                                <p className="text-base font-semibold text-ungu">{list.title}</p>
-                            </div>
-                        </Link>
+                        <div 
+                            key={list.title}
+                            onClick={() => handleMenuClick(list.title, list.description)}
+                            className={`${pathname === list.url ? 'bg-soft text-white' : 'text-navy'} flex items-center text-sm lg:text-base gap-x-4 px-4 py-3 rounded-lg cursor-pointer`}
+                        >
+                            <Image
+                                src={`/${list.icon}.svg`}
+                                alt=""
+                                width={20}
+                                height={20}
+                                priority={true}
+                            />
+                            <p className="text-base font-semibold text-ungu">{list.title}</p>
+                        </div>
                     ))}
                     <button
                         type="button"
                         onClick={() => signOut()}
-                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center">
+                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center"
+                    >
                         <Image
                             src={'/Logout.svg'}
                             alt=""
                             width={20} height={20}
-                            priority={true} />
+                            priority={true}
+                        />
                         Logout
                     </button>
                 </div>
             </motion.div>
 
-            <div className={`${toggleSidebar ? 'block' : ''} flex flex-col mt-8 lg:mt-[60px] gap-y-[52px]`}>
+            <div className={`${isSidebarOpen ? 'hidden' : 'block'} flex flex-col mt-8 lg:mt-[60px] gap-y-[52px]`}>
                 <div className="space-y-4 px-7 ">
                     <div className="flex flex-row gap-x-5 items-center">
                         <motion.div
                             whileTap={{ scale: 0.9 }}
                             whileHover={{ scale: 1.1 }}
-                            onClick={tooglesidebar}
+                            onClick={toggleSidebar}
                         >
                             <Image
-                                onClick={handleToggleSidebar}
+                                onClick={toggleSidebar}
                                 src="/menu.svg"
                                 alt=""
                                 width={20}
                                 height={20}
                                 priority={true}
-                                className={`${toggleSidebar ? 'block' : 'hidden'} block lg:hidden`} />
+                                className={`${isSidebarOpen ? 'block' : 'hidden'} block lg:hidden`}
+                            />
                         </motion.div>
                         <h1 className="text-2xl lg:text-3xl font-semibold text-navy">
                             {activeMenu}
@@ -165,7 +165,7 @@ const SidebarStudents = ({ children }: SidebarProps) => {
                 {children}
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default SidebarStudents
+export default SidebarStudents;
