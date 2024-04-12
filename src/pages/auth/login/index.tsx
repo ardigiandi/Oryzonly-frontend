@@ -1,4 +1,4 @@
-import Loginviews from "@/Views/Auth/Login"
+import Loginviews from "@/Views/Login"
 
 const Login = () => {
     return (

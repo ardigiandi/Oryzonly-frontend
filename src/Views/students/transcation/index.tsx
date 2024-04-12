@@ -1,7 +1,11 @@
+import SidebarStudents from "@/components/fragments/Sidebar_students"
+
 const Transcationviews = () => {
-    return (
+    return(
         <div>
-            <h1>transcation</h1>
+            <h1>
+                Ini Transcation
+            </h1>
         </div>
     )
 }
