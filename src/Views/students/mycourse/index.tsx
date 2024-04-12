@@ -1,21 +1,9 @@
-import SidebarStudents from "@/components/fragments/Sidebar_students"
-
-const listSidebarItem = [
-    {
-        title: 'Back to Home',
-        icon: 'home',
-        url: '/'
-    }
-]
-
-const Student = () => {
+const Studentviews= () => {
     return(
-        <SidebarStudents sidebarItems={listSidebarItem}>
-            <div>
-                
-            </div>
-        </SidebarStudents>
+        <div>
+            <h1>Ini My Course</h1>
+        </div>
     )
 }
 
-export default Student
+export default Studentviews

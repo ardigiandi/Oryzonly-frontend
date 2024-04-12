@@ -4,19 +4,30 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { motion } from "framer-motion";
+import { title } from "process";
 
-type SidebarItem = {
-    title: string;
-    icon: string;
-    url: string;
-}
+const listSidebarItem = [
+    {
+        title: 'My Course',
+        icon: 'note',
+        url: '/students',
+        text: 'My Courses',
+        description: 'Discover all the courses youre enrolled in, all in one place!'
+    },
+    {
+        title: 'Transcation',
+        icon: 'moneys',
+        url: '/students/transcation',
+        text: 'My Transcation',
+        description: 'Discover all the courses youre enrolled in, all in one place!'
+    }
+]
 
 type SidebarProps = {
     children: React.ReactNode;
-    sidebarItems: SidebarItem[];
 }
 
-const SidebarStudents = ({ children, sidebarItems }: SidebarProps) => {
+const SidebarStudents = ({ children }: SidebarProps) => {
     const { pathname } = useRouter();
 
     // FUNGSI SIDEBAR
@@ -44,6 +55,14 @@ const SidebarStudents = ({ children, sidebarItems }: SidebarProps) => {
         setIsClick(!isClick);
     }
 
+    const [activeMenu, setActiveMenu] = useState("My Course")
+    const [menuDescription, setMenuDescription] = useState("Discover all the courses you're enrolled in, all in one place!");
+
+    const handleMenuClick = (text: string) => {
+        setActiveMenu(text);
+    }
+    
+    
     return (
         <section className="flex flex-row bg-lightpurple h-screen">
             <motion.div
@@ -80,8 +99,19 @@ const SidebarStudents = ({ children, sidebarItems }: SidebarProps) => {
                 </div>
 
                 <div className="flex flex-col px-6 mt-12 gap-y-5">
-                    {sidebarItems.map((list) => (
-                        <Link href={list.url} key={list.title}>
+                    <button
+                        type="button"
+                        onClick={() => signOut()}
+                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center">
+                        <Image
+                            src='/home_sidebar.svg'
+                            alt=""
+                            width={20} height={20}
+                            priority={true} />
+                        Back to Home
+                    </button>
+                    {listSidebarItem.map((list) => (
+                        <Link href={list.url} key={list.title} onClick={() => handleMenuClick(list.text)}>
                             <div className={`${pathname === list.url ? 'bg-soft text-white' : 'text-navy'} flex items-center text-sm lg:text-base gap-x-4 px-4 py-3 rounded-lg cursor-pointer`}>
                                 <Image
                                     src={`/${list.icon}.svg`}
@@ -107,7 +137,7 @@ const SidebarStudents = ({ children, sidebarItems }: SidebarProps) => {
                 </div>
             </motion.div>
 
-            <div className="flex flex-col mt-8 lg:mt-[60px] gap-y-[52px]">
+            <div className={`${toggleSidebar ? 'block' : ''} flex flex-col mt-8 lg:mt-[60px] gap-y-[52px]`}>
                 <div className="space-y-4 px-7 ">
                     <div className="flex flex-row gap-x-5 items-center">
                         <motion.div
@@ -125,11 +155,11 @@ const SidebarStudents = ({ children, sidebarItems }: SidebarProps) => {
                                 className={`${toggleSidebar ? 'block' : 'hidden'} block lg:hidden`} />
                         </motion.div>
                         <h1 className="text-2xl lg:text-3xl font-semibold text-navy">
-                            My Courses
+                            {activeMenu}
                         </h1>
                     </div>
                     <p className="text-base text-gray-500">
-                        Discover all the courses youre enrolled in, all in one place!
+                        {menuDescription}
                     </p>
                 </div>
                 {children}

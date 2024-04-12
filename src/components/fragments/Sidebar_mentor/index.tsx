@@ -80,17 +80,6 @@ const SidebarMentor = ({ children, sidebarItems }: SidebarProps) => {
                 </div>
 
                 <div className="flex flex-col px-6 mt-12 gap-y-5">
-                    <button
-                        type="button"
-                        onClick={() => signOut()}
-                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center">
-                        <Image
-                            src='/home_sidebar.svg'
-                            alt=""
-                            width={20} height={20}
-                            priority={true} />
-                        Back to Home
-                    </button>
                     {sidebarItems.map((list) => (
                         <Link href={list.url} key={list.title}>
                             <div className={`${pathname === list.url ? 'bg-soft text-white' : 'text-navy'} flex items-center text-sm lg:text-base gap-x-4 px-4 py-3 rounded-lg cursor-pointer`}>
