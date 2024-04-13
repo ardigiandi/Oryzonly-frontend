@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { motion } from "framer-motion";
 
@@ -29,7 +28,8 @@ type SidebarProps = {
 const SidebarStudents = ({ children }: SidebarProps) => {
     const { pathname } = useRouter();
 
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Tetap terbuka di mode desktop
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState("My Course");
     const [menuDescription, setMenuDescription] = useState("Discover all the courses you are enrolled in, all in one place!");
 
@@ -37,15 +37,20 @@ const SidebarStudents = ({ children }: SidebarProps) => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
     const handleMenuClick = (text: string, description: string) => {
         setActiveMenu(text);
         setMenuDescription(description);
-        setIsSidebarOpen(false);
+        setIsMobileMenuOpen(false);
     };
 
     useEffect(() => {
         const handleResize = () => {
-            setIsSidebarOpen(window.innerWidth < 1024);
+            setIsSidebarOpen(window.innerWidth >= 1024);
+            setIsMobileMenuOpen(false);
         };
 
         handleResize();
@@ -56,11 +61,9 @@ const SidebarStudents = ({ children }: SidebarProps) => {
     return (
         <section className="flex flex-row bg-lightpurple h-screen">
             <motion.div
-                initial={{ opacity: 0, x: -300 }}
-                animate={{ opacity: 1, x: isSidebarOpen ? 0 : -10 }}
-                exit={{ opacity: 0, x: -300 }}
-                transition={{ type: 'tween', stiffness: 120, damping: 10 }}
-                className={`${isSidebarOpen ? 'block' : 'hidden'} sidebar h-screen w-[300px] bg-white fixed lg:relative`}
+                initial={{ opacity: 1, x: 0 }}
+                animate={{ opacity: 1, x: isSidebarOpen ? 0 : -300 }}
+                className="sidebar h-screen lg:w-[300px] bg-white fixed lg:relative"
             >
                 <div className="mt-[60px] space-y-6">
                     <Image
@@ -105,7 +108,7 @@ const SidebarStudents = ({ children }: SidebarProps) => {
                         Back to Home
                     </button>
                     {listSidebarItem.map((list) => (
-                        <div 
+                        <div
                             key={list.title}
                             onClick={() => handleMenuClick(list.title, list.description)}
                             className={`${pathname === list.url ? 'bg-soft text-white' : 'text-navy'} flex items-center text-sm lg:text-base gap-x-4 px-4 py-3 rounded-lg cursor-pointer`}
@@ -136,22 +139,97 @@ const SidebarStudents = ({ children }: SidebarProps) => {
                 </div>
             </motion.div>
 
-            <div className={`${isSidebarOpen ? 'hidden' : 'block'} flex flex-col mt-8 lg:mt-[60px] gap-y-[52px]`}>
-                <div className="space-y-4 px-7 ">
+            <div className={`fixed lg:hidden inset-0 bg-black z-40 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-50' : 'opacity-0 pointer-events-none'}`} onClick={toggleMobileMenu}></div>
+            <div className={`sidebar-mobile lg:hidden transform transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className="mt-[60px] space-y-6">
+                    <Image
+                        onClick={toggleMobileMenu}
+                        src="/x.svg"
+                        width={20}
+                        height={20}
+                        alt=""
+                        priority={true}
+                        className="absolute right-5 top-8 block"
+                    />
+                    <Image
+                        src="/profile_sidebar.png"
+                        width={80}
+                        height={80}
+                        alt=""
+                        priority={true}
+                        className="w-[80px] h-[80px] flex justify-center mx-auto"
+                    />
+                    <div className="flex flex-col">
+                        <p className="text-center text-[20px] text-navy font-medium">
+                            Akmal Widad Iskandar
+                        </p>
+                        <p className="text-center text-[14px] text-gray-600 font-normal">
+                            Fullstack Developer
+                        </p>
+                    </div>
+                </div>
+
+                <div className="flex flex-col px-6 mt-12 gap-y-5">
+                    <button
+                        type="button"
+                        onClick={() => signOut()}
+                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center"
+                    >
+                        <Image
+                            src='/home_sidebar.svg'
+                            alt=""
+                            width={20} height={20}
+                            priority={true}
+                        />
+                        Back to Home
+                    </button>
+                    {listSidebarItem.map((list) => (
+                        <div
+                            key={list.title}
+                            onClick={() => handleMenuClick(list.title, list.description)}
+                            className={`${pathname === list.url ? 'bg-soft text-white' : 'text-navy'} flex items-center text-sm lg:text-base gap-x-4 px-4 py-3 rounded-lg cursor-pointer`}
+                        >
+                            <Image
+                                src={`/${list.icon}.svg`}
+                                alt=""
+                                width={20}
+                                height={20}
+                                priority={true}
+                            />
+                            <p className="text-base font-semibold text-ungu">{list.title}</p>
+                        </div>
+                    ))}
+                    <button
+                        type="button"
+                        onClick={() => signOut()}
+                        className="bg-white py-4 px-4 text-sm lg:text-base font-semibold text-ungu rounded-lg flex gap-x-4 items-center"
+                    >
+                        <Image
+                            src={'/Logout.svg'}
+                            alt=""
+                            width={20} height={20}
+                            priority={true}
+                        />
+                        Logout
+                    </button>
+                </div>
+            </div>
+
+            <div className="flex flex-col mt-8 lg:mt-[60px] gap-y-[52px]">
+                <div className="space-y-4 px-7 lg:hidden">
                     <div className="flex flex-row gap-x-5 items-center">
                         <motion.div
                             whileTap={{ scale: 0.9 }}
                             whileHover={{ scale: 1.1 }}
-                            onClick={toggleSidebar}
+                            onClick={toggleMobileMenu}
                         >
                             <Image
-                                onClick={toggleSidebar}
+                                onClick={toggleMobileMenu}
                                 src="/menu.svg"
                                 alt=""
                                 width={20}
                                 height={20}
                                 priority={true}
-                                className={`${isSidebarOpen ? 'block' : 'hidden'} block lg:hidden`}
                             />
                         </motion.div>
                         <h1 className="text-2xl lg:text-3xl font-semibold text-navy">
