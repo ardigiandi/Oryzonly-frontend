@@ -28,11 +28,11 @@ export default function Navbar() {
 
     // mapping menu navbar desktop
     const links = [
-        { href: "/", text: "Home" },
-        { href: "/courses", text: "Course" },
-        { href: "/students", text: "Services" },
-        { href: "/contact", text: "Instructor" },
-        { href: "/contact", text: "Contact" },
+        { id: 1, href: "/", text: "Home" },
+        { id: 2, href: "/courses", text: "Course" },
+        { id: 3, href: "/students", text: "Services" },
+        { id: 4, href: "/contact", text: "Instructor" },
+        { id: 5, href: "/contact", text: "Contact" },
     ]
 
 
@@ -49,11 +49,11 @@ export default function Navbar() {
     }
 
     // mapping menu navbar mobile
-    const linksnavbar: { href?: string; Image: string; text: string; onClick?: () => void; }[] = [
-        { href: "/", Image: "/home.svg", text: "Home" },
-        { href: "/courses", Image: "/book (1).svg", text: "Course" },
-        { href: "/settings", Image: "/settings.svg", text: "Services" },
-        { Image: "/titik_tiga.svg", text: "More", onClick: toogleMore },
+    const linksnavbar: { id: number; href?: string; Image: string; text: string; onClick?: () => void; }[] = [
+        { id: 1, href: "/", Image: "/home.svg", text: "Home" },
+        { id: 2, href: "/courses", Image: "/book (1).svg", text: "Course" },
+        { id: 3, href: "/settings", Image: "/settings.svg", text: "Services" },
+        { id: 4, Image: "/titik_tiga.svg", text: "More", onClick: toogleMore },
     ]
 
     return (
@@ -71,7 +71,7 @@ export default function Navbar() {
 
                 <ul className="flex-row gap-x-10 hidden lg:flex tracking-[-0.7px]">
                     {links.map((l) => (
-                        <li key={l.href}
+                        <li key={l.id}
                         >
                             <Link href={l.href} className={`${l.href === path ? "text-ungu" : " text-navy"} text-base font-semibold`}>
                                 {l.text}
@@ -114,7 +114,7 @@ export default function Navbar() {
                 <ul className="flex justify-between w-full px-8 ">
                     {linksnavbar.map((link, index) => (
                         <motion.li
-                            key={index}
+                            key={link.id}
                             whileHover={{ scale: 1.1 }}
                             className="flex-col"
                             whileTap={{ scale: 0.9 }}
