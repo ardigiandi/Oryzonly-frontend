@@ -3,10 +3,6 @@ import { useRouter } from "next/router"
 
 const Hero1 = () => {
 
-    const { push } = useRouter()
-    const handlepush = () => {
-        push('/mentor')
-    }
     return (
         <section
             className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between mt-16 items-center px-5 lg:px-0"
@@ -28,9 +24,6 @@ const Hero1 = () => {
                     className="bg-ungu px-9 py-4 lg:px-[60px] flex justify-center lg:py-[18px] text-sm lg:text-base text-white font-semibold rounded-xl tracking-[-0.7px]"
                 >Start Learning Now!</a>
             </div>
-
-            <button onClick={handlepush} className="mt-10">here</button>
-
             <Image src="/main hero.png" alt="" width={500} height={500} priority={true} className="w-1/2 hidden lg:block" />
         </section>
     )
