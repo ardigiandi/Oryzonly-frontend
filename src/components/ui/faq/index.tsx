@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const Faq = () => {
-
     const faqs = [
         {
             question: "Is there any cost to access the content on this website?",
@@ -55,7 +54,7 @@ const Faq = () => {
             <div className="flex flex-wrap justify-center lg:flex-row gap-x-4 gap-y-4">
                 {faqs.map((faq, index) => (
                     <div 
-                        key={index} 
+                        key={faq.question} 
                         className="flex flex-col gap-y-4 w-[600px]">
                         <div className="border-2 rounded-xl ">
 
@@ -63,7 +62,7 @@ const Faq = () => {
                                 onClick={() => toggleAccordion(index)}
                                 className="p-4 flex text-lg font-semibold text-navy cursor-pointer justify-between">
 
-                                <div className="text-sm lg:text-lg w-[300px] lg:w-[490px] tracking-[-0.7px]">
+                                <div className="text-navy text-sm lg:text-lg w-[300px] lg:w-[550px]">
                                     {faq.question}
                                 </div>
                                 <button
@@ -73,8 +72,9 @@ const Faq = () => {
                                     {openStates[index] ? (
                                         <motion.div
                                             className="w-5 h-5 lg:w-8 lg:h-8 bg-navy rounded-full flex justify-center items-center"
-                                            style={{ opacity: openStates[index] ? 1 : 0 }}
+                                            animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 1 : 0 }}
                                             transition={{ duration: 0.5, ease: "easeInOut" }}
+
                                         >
                                             <Image
                                                 src="/arrow-down-white.svg"
@@ -82,12 +82,12 @@ const Faq = () => {
                                                 width={18}
                                                 height={18}
                                                 priority={true}
-                                                className="w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]"
+                                                className="w-[13px] h-[13px] lg:w-8 lg:h-8"
                                             />
                                         </motion.div>
                                     ) : (
                                         <motion.div
-                                            style={{ opacity: openStates[index] ? 0 : 1 }}
+                                            animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 0 : 1 }}
                                             transition={{ duration: 0.5 }}
                                         >
                                             <Image
@@ -96,7 +96,7 @@ const Faq = () => {
                                                 width={18}
                                                 height={18}
                                                 priority={true}
-                                                className="w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]"
+                                                className="w-[13px] h-[13px] lg:w-8 lg:h-8"
                                             />
                                         </motion.div>
                                     )}
@@ -109,7 +109,7 @@ const Faq = () => {
                                 transition={{ duration: 0.3 }}
                                 className={`${openStates[index] ? 'block' : 'hidden'} px-4 mb-3`}
                             >
-                                <h1 className="text-xs lg:text-base text-navy tracking-[-0.7px]">{faq.description}</h1>
+                                <h1 className="text-xs lg:text-sm text-navy">{faq.description}</h1>
                             </motion.div>
                         </div>
                     </div>
