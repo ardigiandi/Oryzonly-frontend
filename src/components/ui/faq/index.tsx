@@ -73,9 +73,8 @@ const Faq = () => {
                                     {openStates[index] ? (
                                         <motion.div
                                             className="w-5 h-5 lg:w-8 lg:h-8 bg-navy rounded-full flex justify-center items-center"
-                                            animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 1 : 0 }}
+                                            style={{ opacity: openStates[index] ? 1 : 0 }}
                                             transition={{ duration: 0.5, ease: "easeInOut" }}
-
                                         >
                                             <Image
                                                 src="/arrow-down-white.svg"
@@ -88,7 +87,7 @@ const Faq = () => {
                                         </motion.div>
                                     ) : (
                                         <motion.div
-                                            animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 0 : 1 }}
+                                            style={{ opacity: openStates[index] ? 0 : 1 }}
                                             transition={{ duration: 0.5 }}
                                         >
                                             <Image
