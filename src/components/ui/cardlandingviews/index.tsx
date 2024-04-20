@@ -45,25 +45,25 @@ const Cardlandingpage = () => {
             </div>
 
 
-            <div className='flex flex-col lg:flex-row justify-center gap-x-5 gap-y-5 px-6 mt-12'>
+            <div className='flex flex-col lg:flex-row justify-center gap-x-5 gap-y-5 px-11 lg:px-6 mt-12'>
                 {Cardlist.map((item, index) => (
-                        <div key={index} className="flex flex-col gap-y-6 border-2 rounded-xl px-5 py-5">
-                            <Image src={item.image} alt="" className="w-[350px]" priority={true} width={355} height={200} />
-                            <div
-                                className="flex flex-col gap-y-5 lg:flex-row justify-between items-start lg:items-center"
-                            >
-                                <h1 className="text-sm font-semibold w-[235px] tracking-[-0.7px]">
-                                    {item.title}
-                                </h1>
-                                <p className="text-sm text-gray-500 tracking-[-0.7px]">{item.price}</p>
-                            </div>
-                            <a
-                                href=""
-                                className="bg-ungu flex justify-center py-4 text-white font-semibold rounded-xl tracking-[-0.7px]"
-                            >Join Now!</a>
+                    <div key={index} className="flex flex-col gap-y-4 lg:gap-y-6 border-2 rounded-xl px-5 py-5 items-start lg:items-center">
+                        <Image src={item.image} alt="" className="w-[355px]" priority={true} width={355} height={200} />
+                        <div
+                            className="flex flex-col gap-y-5 lg:flex-row justify-between items-start lg:items-center"
+                        >
+                            <h1 className="text-sm font-semibold w-[235px] tracking-[-0.7px]">
+                                {item.title}
+                            </h1>
+                            <p className="text-sm text-gray-500 tracking-[-0.7px]">{item.price}</p>
                         </div>
+                        <a
+                            href=""
+                            className="bg-ungu text-sm lg:text-base flex justify-center py-2 lg:py-4 text-white font-semibold rounded-xl tracking-[-0.7px] w-full"
+                        >Join Now!</a>
+                    </div>
                 ))}
-        </div>
+            </div>
         </div >
     )
 }

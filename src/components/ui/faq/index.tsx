@@ -43,7 +43,7 @@ const Faq = () => {
     return (
         <div className="flex flex-col mt-24 gap-y-12 px-5 lg:px-0">
             <div className="text-center space-y-4">
-                <h1 className="text-3xl lg:text-4xl font-semibold text-navy">
+                <h1 className="text-2xl lg:text-4xl font-semibold text-navy">
                     Where Questions Find Answers
                 </h1>
                 <p className="text-sm lg:text-base text-gray-500">
@@ -64,7 +64,7 @@ const Faq = () => {
                                 onClick={() => toggleAccordion(index)}
                                 className="p-4 flex text-lg font-semibold text-navy cursor-pointer justify-between">
 
-                                <div className="lg:w-[550px]">
+                                <div className="text-sm lg:text-lg w-[300px] lg:w-[490px] tracking-[-0.7px]">
                                     {faq.question}
                                 </div>
                                 <button
@@ -73,7 +73,7 @@ const Faq = () => {
                                 >
                                     {openStates[index] ? (
                                         <motion.div
-                                            className="w-8 h-8 bg-navy rounded-full flex justify-center items-center"
+                                            className="w-5 h-5 lg:w-8 lg:h-8 bg-navy rounded-full flex justify-center items-center"
                                             animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 1 : 0 }}
                                             transition={{ duration: 0.5, ease: "easeInOut" }}
 
@@ -84,6 +84,7 @@ const Faq = () => {
                                                 width={18}
                                                 height={18}
                                                 priority={true}
+                                                className="w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]"
                                             />
                                         </motion.div>
                                     ) : (
@@ -97,6 +98,7 @@ const Faq = () => {
                                                 width={18}
                                                 height={18}
                                                 priority={true}
+                                                className="w-[14px] h-[14px] lg:w-[18px] lg:h-[18px]"
                                             />
                                         </motion.div>
                                     )}
@@ -109,7 +111,7 @@ const Faq = () => {
                                 transition={{ duration: 0.3 }}
                                 className={`${openStates[index] ? 'block' : 'hidden'} px-4 mb-3`}
                             >
-                                <h1 className="text-base text-navy">{faq.description}</h1>
+                                <h1 className="text-xs lg:text-base text-navy tracking-[-0.7px]">{faq.description}</h1>
                             </motion.div>
                         </div>
                     </div>
