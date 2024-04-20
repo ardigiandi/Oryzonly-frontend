@@ -60,14 +60,14 @@ const Faq = () => {
 
                             <div
                                 onClick={() => toggleAccordion(index)}
-                                className="p-4 flex text-lg font-semibold text-navy cursor-pointer justify-between">
+                                className="flex text-lg font-semibold text-navy cursor-pointer justify-between">
 
-                                <div className="text-navy text-sm lg:text-lg w-[300px] lg:w-[550px]">
+                                <div className="p-4 text-navy text-sm lg:text-lg w-[300px] lg:w-[550px]">
                                     {faq.question}
                                 </div>
                                 <button
                                     type="button"
-                                    className="focus:outline-none"
+                                    className="focus:outline-none relative right-4"
                                 >
                                     {openStates[index] ? (
                                         <motion.div
