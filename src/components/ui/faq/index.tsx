@@ -42,10 +42,10 @@ const Faq = () => {
     return (
         <div className="flex flex-col mt-24 gap-y-12 px-5 lg:px-0">
             <div className="text-center space-y-4">
-                <h1 className="text-2xl lg:text-4xl font-semibold text-navy">
+                <h1 className="text-2xl lg:text-4xl font-semibold text-navy tracking-[-0.7px]">
                     Where Questions Find Answers
                 </h1>
-                <p className="text-sm lg:text-base text-gray-500">
+                <p className="text-sm lg:text-base text-gray-500 tracking-[-0.7px]">
                     Get Inspired by Real Experiences - Dive into Our Testimonials Section
                     and Hear from Those Who Have Experienced the Difference.
                 </p>
