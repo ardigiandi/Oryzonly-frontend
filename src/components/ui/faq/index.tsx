@@ -69,20 +69,37 @@ const Faq = () => {
                                     type="button"
                                     className="focus:outline-none"
                                 >
-                                    <motion.div
-                                        className="w-5 h-5 lg:w-8 lg:h-8 bg-navy rounded-full flex justify-center items-center"
-                                        animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 1 : 0 }}
-                                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                                    >
-                                        <Image
-                                            src="/arrow-down-white.svg"
-                                            alt=""
-                                            width={18}
-                                            height={18}
-                                            priority={true}
-                                            className="w-[13px] h-[13px] lg:w-[18px] lg:h-[18px]"
-                                        />
-                                    </motion.div>
+                                    {openStates[index] ? (
+                                        <motion.div
+                                            className="w-5 h-5 lg:w-8 lg:h-8 bg-navy rounded-full flex justify-center items-center"
+                                            animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 1 : 0 }}
+                                            transition={{ duration: 0.5, ease: "easeInOut" }}
+
+                                        >
+                                            <Image
+                                                src="/arrow-down-white.svg"
+                                                alt=""
+                                                width={18}
+                                                height={18}
+                                                priority={true}
+                                                className="w-[13px] h-[13px] lg:w-[18px] lg:h-[18px]"
+                                            />
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            animate={{ rotate: openStates[index] ? -180 : 0, opacity: openStates[index] ? 0 : 1 }}
+                                            transition={{ duration: 0.5 }}
+                                        >
+                                            <Image
+                                                src="/btn arrow faq.svg"
+                                                alt=""
+                                                width={18}
+                                                height={18}
+                                                priority={true}
+                                                className="w-[13px] h-[13px] lg:w-[18px] lg:h-[18px]"
+                                            />
+                                        </motion.div>
+                                    )}
                                 </button>
                             </div>
                             <motion.div
