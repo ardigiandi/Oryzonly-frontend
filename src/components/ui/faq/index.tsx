@@ -53,8 +53,8 @@ const Faq = () => {
 
             <div className="flex flex-wrap justify-center lg:flex-row gap-x-4 gap-y-4">
                 {faqs.map((faq, index) => (
-                    <div 
-                        key={faq.question} 
+                    <div
+                        key={faq.question}
                         className="flex flex-col gap-y-4 w-[600px]">
                         <div className="border-2 rounded-xl ">
 
@@ -62,7 +62,7 @@ const Faq = () => {
                                 onClick={() => toggleAccordion(index)}
                                 className="flex text-lg font-semibold text-navy cursor-pointer justify-between">
 
-                                <div className="p-4 text-navy text-sm lg:text-lg w-[300px] lg:w-[550px]">
+                                <div className="p-4 text-navy text-sm lg:text-xl w-[300px] lg:w-[550px] tracking-[-0.7px]">
                                     {faq.question}
                                 </div>
                                 <button
@@ -109,7 +109,7 @@ const Faq = () => {
                                 transition={{ duration: 0.3 }}
                                 className={`${openStates[index] ? 'block' : 'hidden'} px-4 mb-3`}
                             >
-                                <h1 className="text-xs lg:text-sm text-navy">{faq.description}</h1>
+                                <h1 className="text-xs lg:text-sm text-navy tracking-[-0.7px]">{faq.description}</h1>
                             </motion.div>
                         </div>
                     </div>
