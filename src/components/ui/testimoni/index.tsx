@@ -6,28 +6,28 @@ const Person = [
         name: 'Jane Cooper',
         profesi: 'Web Designer',
         rating: '4.8',
-        description: 'Ive never been more engaged in learning until I discovered this platform. The courses are not only informative but also incredibly enjoyable. Highly recommended!'
+        description: "I've never been more engaged in learning until I discovered this platform. The courses are not only informative but also incredibly enjoyable. Highly recommended!"
     },
     {
         image: '/profile 2.svg',
-        name: 'Jane Cooper',
-        profesi: 'Web Designer',
+        name: 'Devon Lane',
+        profesi: 'Programmer',
         rating: '4.8',
-        description: 'Ive never been more engaged in learning until I discovered this platform. The courses are not only informative but also incredibly enjoyable. Highly recommended!'
+        description: "As a busy professional, I appreciate the flexibility this platform offers. I can learn at my own pace and still get the support I need from instructors. Its been a game-changer for me."
     },
     {
         image: '/profile 3.svg',
-        name: 'Jane Cooper',
-        profesi: 'Web Designer',
+        name: 'Jacob Jones',
+        profesi: 'Frontend Developer',
         rating: '4.8',
-        description: 'Ive never been more engaged in learning until I discovered this platform. The courses are not only informative but also incredibly enjoyable. Highly recommended!'
+        description: "I've recommended this platform to all my friends and colleagues. The quality of instruction, the user-friendly interface, and the affordability make it stand out from other online learning platforms."
     },
     {
-        image: '/profile 3.svg',
-        name: 'Jane Cooper',
-        profesi: 'Web Designer',
+        image: '/profile 4.svg',
+        name: 'Kristin Watson',
+        profesi: 'President of Sales',
         rating: '4.8',
-        description: 'Ive never been more engaged in learning until I discovered this platform. The courses are not only informative but also incredibly enjoyable. Highly recommended!'
+        description: 'I was skeptical about online learning at first, but this platform exceeded my expectations. The community aspect and interactive elements make it feel like a real classroom experience.'
     },
 ]
 
