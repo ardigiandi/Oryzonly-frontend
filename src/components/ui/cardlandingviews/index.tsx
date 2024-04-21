@@ -47,7 +47,7 @@ const Cardlandingpage = () => {
 
             <div className='flex flex-col lg:flex-row justify-center gap-x-5 gap-y-5 px-11 lg:px-6 mt-12'>
                 {Cardlist.map((item, index) => (
-                    <div key={index} className="flex flex-col gap-y-4 lg:gap-y-6 border-2 rounded-xl px-5 py-5 items-start lg:items-center">
+                    <div key={index} className="flex flex-col gap-y-4 lg:gap-y-6 border-2 rounded-xl px-5 py-5">
                         <Image src={item.image} alt="" className="w-[355px]" priority={true} width={355} height={200} />
                         <div
                             className="flex flex-col gap-y-5 lg:flex-row justify-between items-start lg:items-center"

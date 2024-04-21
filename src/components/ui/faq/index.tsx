@@ -2,33 +2,33 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+const faqs = [
+    {
+        question: "Is there any cost to access the content on this website?",
+        description: 'No, this site provides educational content for free to all users.'
+    },
+    {
+        question: "How can I start learning on this site?",
+        description: 'You can begin learning by creating a free account and exploring the various subject materials available according to your interests and needs.'
+    },
+    {
+        question: "Is there an age limit for using this site?",
+        description: 'No, this site is open to all ages designed to meet learning needs from children to adults.'
+    },
+    {
+        question: "How can I interact with teachers or instructors?",
+        description: 'You can interact with instructors through discussion forums, live classes, or via email to get assistance or have your questions answered '
+    },
+    {
+        question: "Is the content on this site aligned with school curricula?",
+        description: 'Yes, most of the content is aligned with school curricula to help students prepare for exams or deepen their understanding of specific subjects.'
+    },
+    {
+        question: "How can I obtain a certificate after completing a course?",
+        description: 'After completing a course, you can take an assessment exam, and if successful, you will be awarded a downloadable as proof of course completion.'
+    }
+];
 const Faq = () => {
-    const faqs = [
-        {
-            question: "Is there any cost to access the content on this website?",
-            description: 'No, this site provides educational content for free to all users.'
-        },
-        {
-            question: "How can I start learning on this site?",
-            description: 'You can begin learning by creating a free account and exploring the various subject materials available according to your interests and needs.'
-        },
-        {
-            question: "Is there an age limit for using this site?",
-            description: 'No, this site is open to all ages designed to meet learning needs from children to adults.'
-        },
-        {
-            question: "How can I interact with teachers or instructors?",
-            description: 'You can interact with instructors through discussion forums, live classes, or via email to get assistance or have your questions answered '
-        },
-        {
-            question: "Is the content on this site aligned with school curricula?",
-            description: 'Yes, most of the content is aligned with school curricula to help students prepare for exams or deepen their understanding of specific subjects.'
-        },
-        {
-            question: "How can I obtain a certificate after completing a course?",
-            description: 'After completing a course, you can take an assessment exam, and if successful, you will be awarded a downloadable as proof of course completion.'
-        }
-    ];
 
     const [openStates, setOpenStates] = useState(Array(faqs.length).fill(false));
 

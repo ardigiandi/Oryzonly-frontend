@@ -3,6 +3,7 @@ import Hero2 from "@/components/ui/Hero2"
 import Sponsorship from "@/components/layouts/Sponsorship"
 import Cardlandingpage from "@/components/ui/cardlandingviews"
 import Faq from "@/components/ui/faq"
+import Testimonilandingviews from "../testimoniviews"
 
 const Landingviews = () => {
     return(
@@ -12,6 +13,7 @@ const Landingviews = () => {
             <Hero2/>
             <Cardlandingpage/>
             <Faq/>
+            <Testimonilandingviews/>
         </>
     )
 }
