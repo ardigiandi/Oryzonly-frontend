@@ -1,14 +1,13 @@
-import Image from "next/image"
 
 type Propstypes = {
     children : React.ReactNode
 }
 
-const AuthCardLanding = (props : Propstypes) => {
+const AuthTestiLanding = (props : Propstypes) => {
 
     const { children } = props;
     return (
-        <div className="max-w-6xl mx-auto flex flex-col mt-[120px]">
+        <div className="flex flex-col mt-[120px]">
             <div className="text-center space-y-3">
                 <h1 className="text-2xl lg:text-4xl font-semibold text-navy tracking-[-0.7px]">
                     See What People Are Saying
@@ -24,4 +23,4 @@ const AuthCardLanding = (props : Propstypes) => {
     )
 }
 
-export default AuthCardLanding
+export default AuthTestiLanding

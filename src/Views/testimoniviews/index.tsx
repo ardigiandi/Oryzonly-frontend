@@ -1,11 +1,11 @@
-import AuthCardLanding from "@/components/layouts/auth_testi_landing"
+import AuthTestiLanding from "@/components/layouts/AuthTestiLanding"
 import Testimoni from "@/components/ui/testimoni"
 
 const Testimonilandingviews = () => {
     return(
-        <AuthCardLanding>
+        <AuthTestiLanding>
             <Testimoni/>
-        </AuthCardLanding>
+        </AuthTestiLanding>
     )
 }
 
