@@ -1,7 +1,9 @@
+import Courseviews from "@/Views/courseviews";
+
 export default function Courses () {
     return(
         <div>
-            Ini Courses
+            <Courseviews/>
         </div>
     )
 }
