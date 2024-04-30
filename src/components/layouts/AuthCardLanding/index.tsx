@@ -1,10 +1,17 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 type Propstypes = {
     children: React.ReactNode
 }
 
 const AuthCardLanding = (props : Propstypes) => {
+
+    const router = useRouter()
+
+    const handleCourse = () => {
+        router.push('/courses')
+    }
 
     const { children } = props
     return (
@@ -22,7 +29,7 @@ const AuthCardLanding = (props : Propstypes) => {
                     </p>
                 </div>
                 <div className="flex flex-row gap-x-4 justify-end cursor-pointer">
-                    <h1 className="text-sm lg:text-base font-semibold text-navy tracking-[-0.7px]">
+                    <h1 onClick={handleCourse} className="text-sm lg:text-base font-semibold text-navy tracking-[-0.7px]">
                         See All Courses
                     </h1>
                     <Image src="/arrow-right.svg" alt="" className="w-[20px]" width={20} height={20} priority={true} />

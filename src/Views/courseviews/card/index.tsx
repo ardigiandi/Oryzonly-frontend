@@ -6,7 +6,7 @@ type Cardlist = {
     price?: string;
 };
 
-const Card = ({ cardList }: { cardList: Cardlist[] }) => {
+const Cardcourse = ({ cardList }: { cardList: Cardlist[] }) => {
     return (
         <>
             {cardList.map((item, index) => (
@@ -32,4 +32,4 @@ const Card = ({ cardList }: { cardList: Cardlist[] }) => {
     );
 };
 
-export default Card;
+export default Cardcourse;

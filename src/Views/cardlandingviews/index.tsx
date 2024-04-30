@@ -1,5 +1,5 @@
 import AuthCardLanding from "@/components/layouts/AuthCardLanding"
-import Card from "@/components/ui/card"
+import Card from "@/components/ui/card";
 
 const list = [
     {
