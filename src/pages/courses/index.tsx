@@ -1,4 +1,4 @@
-import Courseviews from "@/Views/courseviews"
+import Courseviews from "@/components/Views/courseviews"
 
 export default function Courses () {
     return(

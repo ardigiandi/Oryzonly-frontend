@@ -1,5 +1,5 @@
 import SidebarStudents from "@/components/fragments/Sidebar_students"
-import Transcationviews from "@/Views/students/transcation"
+import Transcationviews from "@/components/Views/students/transcation"
 
 
 const Transcation = () => {

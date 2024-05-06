@@ -1,5 +1,5 @@
-import Card from "@/components/ui/card"
 import Image from "next/image"
+import Cardcourse from "./card"
 
 
 const list = [
@@ -79,7 +79,7 @@ const Courseviews = () => {
             <div
                 className="flex justify-center flex-wrap gap-x-5 gap-y-5 mt-12 mx-2"
             >
-                <Card cardList={list} />
+                <Cardcourse cardList={list} />
             </div>
         </section>
 

@@ -1,5 +1,5 @@
 import SidebarStudents from "@/components/fragments/Sidebar_students"
-import Studentviews from "@/Views/students/mycourse"
+import Studentviews from "@/components/Views/students/mycourse"
 
 const Dashboardstudent = () => {
     return(

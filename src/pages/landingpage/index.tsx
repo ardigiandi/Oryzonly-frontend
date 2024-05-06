@@ -1,4 +1,4 @@
-import Landingviews from "@/Views/landingviews"
+import Landingviews from "@/components/Views/landingviews"
 
 const Landingpage = () => {
     return(
