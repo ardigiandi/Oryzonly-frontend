@@ -16,7 +16,7 @@ const Sidebar = (props: Propstypes) => {
     const { lists } = props
     const { pathname } = useRouter()
     return (
-        <div className="w-[250px] bg-ungu h-[100vh]">
+        <div className="w-[250px] bg-ungu">
             <div className="space-y-1">
                 <h1 className="text-white text-xl py-5 px-4 font-semibold">Dashboard Admin</h1>
                 {lists.map((list, index) => (
