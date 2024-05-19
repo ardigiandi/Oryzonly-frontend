@@ -20,7 +20,7 @@ export async function signUp(
         callback(false);
     } else {
         if (!userData.role) {
-            userData.role = "member";
+            userData.role = "murid";
         }
         userData.password = await bcrypt.hash(userData.password, 10);
         userData.created_at = new Date();

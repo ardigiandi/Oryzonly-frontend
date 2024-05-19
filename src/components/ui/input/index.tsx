@@ -15,11 +15,13 @@ type Propstypes = {
     passwordvisible?: boolean | undefined;
     children? : React.ReactNode
     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
+    defaultValue? : string
+    disable? : boolean
 }
 
 const Input = (props: Propstypes) => {
 
-    const { label, name, type, placeholder, value, onChange, children, onSubmit } = props
+    const { label, name, type, placeholder, value, onChange, children, onSubmit, defaultValue, disable } = props
     return (
         <div>
             <label htmlFor={name} className="text-base text-navy font-semibold tracking-[-0.7px]">
@@ -34,6 +36,8 @@ const Input = (props: Propstypes) => {
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
+                    defaultValue={defaultValue}
+                    disabled={disable}
                 />
                 <div className="absolute inset-y-0 left-3 flex items-center pr-3 pointer-events-none">
                     <Image src={props.Image} width={20} height={20} alt="search" />

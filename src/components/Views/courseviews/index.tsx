@@ -6,43 +6,15 @@ const list = [
     {
         image: '/card 1.png',
         title: 'Coding Odyssey: Journey into the World of Programming',
-        price: 'Rp 240,000',
     },
     {
         image: '/card 2.png',
         title: 'Unleashing Creativity: Understanding Design in all Dimensions',
-        price: 'Free',
     },
     {
         image: '/card 3.png',
         title: 'Digital Mastery: Unleashing Your Marketing Potential',
-        price: 'Rp 250,000',
     }, 
-    {
-        image: '/card 3.png',
-        title: 'The Art of Thinking Clearly: The Power of Mindfulness',
-        price: 'Rp 180,000',
-    },
-    {
-        image: '/card 3.png',
-        title: 'The Art of Thinking Clearly: The Power of Mindfulness',
-        price: 'Rp 180,000',
-    },
-    {
-        image: '/card 3.png',
-        title: 'The Art of Thinking Clearly: The Power of Mindfulness',
-        price: 'Rp 180,000',
-    },
-    {
-        image: '/card 3.png',
-        title: 'The Art of Thinking Clearly: The Power of Mindfulness',
-        price: 'Rp 180,000',
-    },
-    {
-        image: '/card 3.png',
-        title: 'The Art of Thinking Clearly: The Power of Mindfulness',
-        price: 'Rp 180,000',
-    },
 ]
 
 const Courseviews = () => {

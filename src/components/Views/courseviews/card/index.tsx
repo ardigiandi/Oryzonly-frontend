@@ -16,15 +16,12 @@ const Cardcourse = ({ cardList }: { cardList: Cardlist[] }) => {
                         <h1 className="text-sm font-semibold w-[235px] tracking-[-0.7px]">
                             {item.title}
                         </h1>
-                        <p className="text-sm text-gray-500 tracking-[-0.7px]">
-                            {item.price}
-                        </p>
                     </div>
                     <a
                         href="#your-link-target"
                         className="bg-ungu text-sm lg:text-base flex justify-center py-2 lg:py-4 text-white font-semibold rounded-xl tracking-[-0.7px] w-full"
                     >
-                        Join Now!
+                        Open
                     </a>
                 </div>
             ))}

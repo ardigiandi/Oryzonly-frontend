@@ -7,11 +7,11 @@ import {
   query,
   where,
   addDoc,
+  updateDoc,
 } from "firebase/firestore";
 import app from "./init";
 
 const firestore = getFirestore(app);
-
 
 // MENGAMBIL DATA
 export async function retriveData(collectionName: string) {
@@ -60,4 +60,20 @@ export async function addData(
       callback(false);
       console.log(error);
     });
+}
+
+export async function updateData(
+  collectionName: string,
+  id: string,
+  data: any,
+  callback: Function
+) {
+  const docRef = doc(firestore, collectionName, id);
+  await updateDoc(docRef, data)
+  .then(() => {
+    callback(true)
+  })
+  .catch(() => {
+    callback(false)
+  })
 }
