@@ -1,12 +1,12 @@
-import SidebarStudents from "@/components/fragments/Sidebar_students"
+import Sidebar from "@/components/fragments/Sidebar"
 import Transcationviews from "@/components/Views/students/transcation"
 
 
 const Transcation = () => {
     return(
-        <SidebarStudents>
+        <Sidebar>
             <Transcationviews/>
-        </SidebarStudents>
+        </Sidebar>
     )
 }
 

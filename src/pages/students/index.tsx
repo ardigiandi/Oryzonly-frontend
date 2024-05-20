@@ -1,11 +1,11 @@
-import SidebarStudents from "@/components/fragments/Sidebar_students"
+import Sidebar from "@/components/fragments/Sidebar"
 import Studentviews from "@/components/Views/students/mycourse"
 
 const Dashboardstudent = () => {
     return(
-        <SidebarStudents>
+        <Sidebar>
             <Studentviews/>
-        </SidebarStudents>
+        </Sidebar>
     )
 }
 

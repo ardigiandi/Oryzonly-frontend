@@ -1,6 +1,7 @@
+
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { signIn, signOut, useSession } from "next-auth/react"
 import Button from "@/components/ui/button"
 import { usePathname } from "next/navigation"
@@ -9,13 +10,18 @@ import { useRouter } from "next/router"
 
 export default function Navbar() {
 
-    // meengambil data
+    // mengambil data
     const { data }: any = useSession()
 
     // Fungsi navbar
     const [isClick, setIsClick] = useState(false);
     const toogleNavbar = () => {
         setIsClick(!isClick);
+    }
+
+    const [isOpen, setIsOpen] = useState(false);
+    const toogleisOpen = () => {
+        setIsOpen(!isOpen);
     }
 
     // Fungsi more
@@ -30,11 +36,16 @@ export default function Navbar() {
     const links = [
         { id: 1, href: "/", text: "Home" },
         { id: 2, href: "/courses", text: "Course" },
-        { id: 3, href: "/students", text: "Services" },
-        { id: 4, href: "/contact", text: "Instructor" },
-        { id: 5, href: "/contact", text: "Contact" },
+        { id: 3, href: "", text: "Services" },
+        { id: 4, href: "", text: "Instructor" },
+        { id: 5, href: "", text: "Contact" },
     ]
 
+    // Push Dashboard
+    const Router = useRouter()
+    const handleOpen = () => {
+        Router.push('/dashboard')
+    }
 
     const router = useRouter()
     const [activeIndex, setActiveIndex] = useState(0)
@@ -56,8 +67,24 @@ export default function Navbar() {
         { id: 4, Image: "/titik_tiga.svg", text: "More", onClick: toogleMore },
     ]
 
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside, true);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
+
     return (
         <nav className="relative max-w-6xl mx-auto flex flex-col">
+            {/* navbar */}
             <div className="flex flex-row mt-8 items-center px-5 w-full justify-between">
                 <div className="w-full lg:w-auto">
                     <Image
@@ -71,8 +98,7 @@ export default function Navbar() {
 
                 <ul className="flex-row gap-x-10 hidden lg:flex tracking-[-0.7px]">
                     {links.map((l) => (
-                        <li key={l.id}
-                        >
+                        <li key={l.id}>
                             <Link href={l.href} className={`${l.href === path ? "text-ungu" : " text-navy"} text-base font-semibold`}>
                                 {l.text}
                             </Link>
@@ -85,26 +111,40 @@ export default function Navbar() {
                     whileTap={{ scale: 0.9 }}
                     onClick={toogleNavbar}
                     className="lg:hidden cursor-pointer flex justify-end">
-                    {isClick ? <Image src="/x.svg" alt="" width={24} height={24} priority={true} /> : <Image src="/menu.svg" alt="" width={24} height={24} priority={true} />}
+                    {isClick ? <Image src="/x.svg" alt="Close menu" width={24} height={24} priority={true} /> : <Image src="/menu.svg" alt="Open menu" width={24} height={24} priority={true} />}
                 </motion.div>
 
-
-                {data ? <Button
-                    className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
-                    onClick={() => signOut()}
-                    type="button"
-                >
-                    Logout
-                </Button> : <Button
-                    className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
-                    onClick={() => signIn()}
-                    type="button"
-                >
-                    Login
-                </Button>}
+                {data ?
+                    <div className="relative hidden lg:flex" ref={dropdownRef}>
+                        <div onClick={toogleisOpen}
+                            className="flex flex-row gap-x-2 items-center">
+                            <Image src="/profile.png" alt="Profile" width={40} height={40} priority={true} />
+                            <h1 className="text-base text-navy font-semibold cursor-pointer">
+                                Hi, Akmal Widad
+                            </h1>
+                        </div>
+                        <div className={`${isOpen ? 'block' : 'hidden'} absolute top-14 right-0 bg-white space-y-2 rounded-md shadow-xl px-10 py-3`}>
+                            <h1 onClick={handleOpen}
+                                className="text-base text-navy font-semibold cursor-pointer">
+                                Dashboard
+                            </h1>
+                            <h1 className="text-base text-navy font-semibold cursor-pointer"
+                                onClick={() => signOut()}>
+                                Logout
+                            </h1>
+                        </div>
+                    </div>
+                    : <Button
+                        className="bg-ungu px-12 py-[14px] text-base font-semibold text-white rounded-xl hidden lg:block"
+                        onClick={() => signIn()}
+                        type="button"
+                    >
+                        Login
+                    </Button>}
             </div>
+            {/* navbar */}
 
-
+            {/* Hamburger */}
             <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: isClick ? 0 : 20 }}
@@ -146,13 +186,17 @@ export default function Navbar() {
                     className={`${isMore ? "block" : "hidden"}  w-full bottom-[110px] flex justify-center absolute`}
                 >
                     {data ?
-                        <Button
-                            onClick={() => signOut()}
-                            className="bg-soft text-base font-semibold w-full fixed py-3 rounded-md border border-gray-300"
-                            type="button"
-                        >
-                            Logout
-                        </Button> :
+                        <div className="flex flex-row gap-x-5 items-center bg-soft text-base font-semibold w-full rounded-md border border-gray-300 justify-center">
+                            <Button
+                                onClick={() => signOut()}
+                                className="text-base text-navy font-semibold"
+                                type="button"
+                            >
+                                Logout
+                            </Button>
+                            <h1 onClick={handleOpen} className="text-base text-navy font-semibold cursor-pointer">Dashboard</h1>
+                        </div>
+                        :
                         <Button
                             onClick={() => signIn()}
                             className="bg-soft text-base font-semibold w-full fixed py-3 rounded-md border border-gray-300"
@@ -163,6 +207,7 @@ export default function Navbar() {
                     }
                 </motion.li>
             </motion.div>
-        </nav >
+            {/* Hamburger */}
+        </nav>
     )
 }

@@ -1,4 +1,4 @@
-import SidebarStudents from "@/components/fragments/Sidebar_students"
+import SidebarStudents from "@/components/fragments/Sidebar"
 
 const Transcationviews = () => {
     return(

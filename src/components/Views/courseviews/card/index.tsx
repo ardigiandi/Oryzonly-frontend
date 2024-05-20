@@ -21,7 +21,7 @@ const Cardcourse = ({ cardList }: { cardList: Cardlist[] }) => {
                         href="#your-link-target"
                         className="bg-ungu text-sm lg:text-base flex justify-center py-2 lg:py-4 text-white font-semibold rounded-xl tracking-[-0.7px] w-full"
                     >
-                        Open
+                        Join Now!
                     </a>
                 </div>
             ))}
