@@ -11,8 +11,8 @@ const manrope = Manrope({
   weight: ['200', '300', '400', '500', '600', '700', '800',]
 })
 
-const disableNavbar = ['auth', 'mentor', 'students', 'admin']
-const disableFooter = ['auth', 'mentor', 'students', 'admin']
+const disableNavbar = ['auth', 'mentor', 'member', 'admin']
+const disableFooter = ['auth', 'mentor', 'member', 'admin']
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 

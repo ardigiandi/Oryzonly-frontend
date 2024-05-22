@@ -1,9 +1,7 @@
-import Courseviews from "@/components/Views/courseviews"
+import Courseviews from '../../components/views/courseviews/index'
 
 export default function Courses () {
     return(
-        <div>
-            <Courseviews/>
-        </div>
+       <Courseviews/>
     )
 }

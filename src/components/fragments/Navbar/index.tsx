@@ -44,7 +44,7 @@ export default function Navbar() {
     // Push Dashboard
     const Router = useRouter()
     const handleOpen = () => {
-        Router.push('/dashboard')
+        Router.push('/member')
     }
 
     const router = useRouter()
