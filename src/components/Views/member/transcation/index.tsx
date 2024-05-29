@@ -5,9 +5,9 @@ import Image from "next/image"
 export default function Transcationviews() {
     return (
         <Memberlayout>
-            <section className="py-[40px] px-8 space-y-8 lg:ml-[300px]">
+            <section className="py-[30px] px-8 space-y-8 lg:ml-[300px]">
                 <div className="flex flex-col gap-y-4">
-                    <h1 className="text-[32px] font-semibold text-navy">My Transactions</h1>
+                    <h1 className="text-[32px] px-8 font-semibold text-navy">My Transactions</h1>
                     <p className="text-base text-gray-400 font-semibold">
                         Track your financial activities effortlessly.
                     </p>

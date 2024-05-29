@@ -42,9 +42,9 @@ const Card = [
 export default function Courseviews() {
     return (
         <Memberlayout>
-            <div className="py-[40px] flex flex-col lg:ml-[300px] ">
+            <div className="lg:py-[40px] flex flex-col lg:ml-[300px] ">
                 <div className="flex flex-col mx-7 gap-y-4">
-                    <h1 className="text-3xl text-navy font-semibold tracking-[-0.7px]">
+                    <h1 className="text-3xl px-8 text-navy font-semibold tracking-[-0.7px]">
                         My Courses
                     </h1>
                     <p className="text-base text-gray-500 font-semibold tracking-[-0.7px]">

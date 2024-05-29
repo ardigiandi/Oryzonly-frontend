@@ -14,14 +14,10 @@ type Propstype = {
 
 export default function Sidebar(props: Propstype) {
     const { lists } = props
-    const { push } = useRouter()
     const { pathname } = useRouter()
-    const handleLogout = () => {
-        signOut({ callbackUrl: "/" })
-    }
 
     return (
-        <aside className="w-[300px] h-screen bg-white hidden lg:flex flex-col fixed">
+        <aside className="w-[300px] h-screen bg-white flex-col fixed">
             <div className="flex flex-col justify-center items-center gap-y-6 mt-[60px]">
                 <Image
                     src="/profile 1.svg"
