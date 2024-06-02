@@ -9,5 +9,6 @@ export function mainMiddleware() {
 export default WithAuth(mainMiddleware, [
     'mentor',
     'member',
+    'admin',
     'user'
 ])

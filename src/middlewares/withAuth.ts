@@ -9,7 +9,7 @@ import {
 const onlyMentor = ["mentor"];
 const onlyMember = ["member"];
 const authPage = ["auth"];
-const onlyAdmin = ["admin"]
+const onlyAdmin = ["admin"];
 
 export default function WithAuth(
   middleware: NextMiddleware,
@@ -17,7 +17,7 @@ export default function WithAuth(
 ) {
   return async (req: NextRequest, next: NextFetchEvent) => {
     const pathname = req.nextUrl.pathname.split("/")[1];
-    
+
     // Check if the current page requires authentication
     if (requireAuth.includes(pathname)) {
       const token = await getToken({
@@ -40,17 +40,17 @@ export default function WithAuth(
         }
 
         // Redirect non-mentor users away from mentor-only pages
-        if (token.role !== 'mentor' && onlyMentor.includes(pathname)) {
+        if (token.role !== "mentor" && onlyMentor.includes(pathname)) {
           return NextResponse.redirect(new URL("/", req.url));
         }
 
         // Redirect mentors away from member-only pages
-        if (token.role === 'mentor' && onlyMember.includes(pathname)) {
+        if (token.role === "mentor" && onlyMember.includes(pathname)) {
           return NextResponse.redirect(new URL("/", req.url));
         }
 
-        if (token.role !== 'admin' && onlyAdmin.includes(pathname)) {
-          return NextResponse.redirect(new URL("/", req.url))
+        if (token.role !== "admin" && onlyAdmin.includes(pathname)) {
+          return NextResponse.redirect(new URL("/", req.url));
         }
       }
     }
